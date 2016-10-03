@@ -1,0 +1,149 @@
+#define MAX_AUG_SLOTS 10
+
+Sub Main
+    /echo inc to analyse Inventory and find the best Aug
+    
+    /if (!${Defined[echo]}) /declare echo string outer echo
+    
+    /declare i int local
+    /for i 0 to 20
+         /call MissingAugs ${InvSlot[${i}].Name}
+    /next i
+/return
+
+Sub MissingAugs(string SLOTNAME)
+
+    /declare x int local
+    /declare range int local ${Me.Inventory[${SLOTNAME}].Augs}
+
+    /declare bct_command string local bcaa
+
+    /for x 1 to ${range}
+        /if (!${Bool[${Me.Inventory[${SLOTNAME}].Item[${x}]}]}) {
+            /docommand /${echo} -[${Me.Name}]: ${SLOTNAME} missing Slot:${Cr}${x}${Cx} - Type:${Cr}${Me.Inventory[${SLOTNAME}].AugSlot${x}}${Cx}
+            /call BankFind "" "${SLOTNAME}" "Augmentation" ${Me.Inventory[${SLOTNAME}].AugSlot${x}}
+        }
+    /next x
+
+/return
+
+Sub BankFind(string strFindName, string strFindSlot, string strFindType, int strAugType)
+
+    /declare i int local
+    /declare e int local
+    /declare itemName string local
+    /declare itemScore int local
+    /declare itemReturn string local
+    /declare itemBestReturn string local
+
+    /for i 1 to 24
+        /if (${Me.Bank[${i}].Container}) {
+            /for e 1 to ${Me.Bank[${i}].Container}
+                /varset itemName ${Me.Bank[${i}].Item[${e}]}
+                /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${itemName}].AC} * ${FindItemBank[${itemName}].HP}) / 10
+                /if (${Select[${Me.Class.ShortName},ROG,BER,BRD,MNK,RNG,BST]})      /varcalc itemScore (${FindItemBank[${itemName}].AC} * ${FindItemBank[${itemName}].HP}) / 10
+                /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC,CLR,SHM]})  /varcalc itemScore (${FindItemBank[${itemName}].Mana} * ${FindItemBank[${itemName}].HP}) / 10
+
+                |   Item Class                                              && Item Type
+                /if (${FindItemBank[${itemName}].WornSlot[${strFindSlot}]} && ${FindItemBank[${itemName}].Type.Equal[${strFindType}]}) {
+                    /if (${strAugType} && ${FindItemBank[${itemName}].Type.Equal[Augmentation]}) {
+                        /call AugType ${FindItemBank[${itemName}].AugType} ${strAugType}
+                        /if (${Macro.Return}) {
+                            /call strArrayArg "${itemReturn}" "${itemName}" "|"
+                            /varset itemReturn ${Macro.Return}
+                            /if (!${itemBestReturn.Length} || ${itemScore} > ${itemBestReturn.Arg[2,|]}) /varset itemBestReturn ${itemName}|${itemScore}
+                        }
+                    } else {
+                        /call strArrayArg "${itemReturn}" "${itemName}" "|"
+                        /varset itemReturn ${Macro.Return}
+                        /if (!${itemBestReturn.Length} || ${itemScore} > ${itemBestReturn.Arg[2,|]}) /varset itemBestReturn ${itemName}|${itemScore}
+                    }
+                }
+                
+                /if (${itemName.Find[${strFindName}]}) /docommand /${echo} [${Me.Bank[${i}].Item[${e}]}] -> (${Me.Bank[${i}]}] -> BankSlot${i} -> PackSlot${e})
+            /next e
+        } else /if (${Me.Bank[${i}].ID}) {
+            /varset itemName ${Me.Bank[${i}]}
+            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${itemName}].AC} * ${FindItemBank[${itemName}].HP}) / 10
+            /if (${Select[${Me.Class.ShortName},ROG,BER,BRD,MNK,RNG,BST]})      /varcalc itemScore (${FindItemBank[${itemName}].AC} * ${FindItemBank[${itemName}].HP}) / 10
+            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC,CLR,SHM]})  /varcalc itemScore (${FindItemBank[${itemName}].Mana} * ${FindItemBank[${itemName}].HP}) / 10
+            
+            |   Item Class                                              && Item Type
+            /if (${FindItemBank[${itemName}].WornSlot[${strFindSlot}]} && ${FindItemBank[${itemName}].Type.Equal[${strFindType}]}) {
+                /if (${strAugType} && ${FindItemBank[${itemName}].Type.Equal[Augmentation]}) {
+                    /call AugType ${FindItemBank[${itemName}].AugType} ${strAugType}
+                    /if (${Macro.Return}) {
+                        /call strArrayArg "${itemReturn}" "${itemName}" "|"
+                        /varset itemReturn ${Macro.Return}
+                        /if (!${itemBestReturn.Length} || ${itemScore} > ${itemBestReturn.Arg[2,|]}) /varset itemBestReturn ${itemName}|${itemScore}
+                    }
+                } else {
+                    /call strArrayArg "${itemReturn}" "${itemName}" "|"
+                    /varset itemReturn ${Macro.Return}
+                    /if (!${itemBestReturn.Length} || ${itemScore} > ${itemBestReturn.Arg[2,|]}) /varset itemBestReturn ${itemName}|${itemScore}
+                }
+            }
+            
+            /if (${itemName.Find[${strFindName}]}) /docommand /${echo} [${Me.Bank[${i}]}] -> (BankSlot${i})
+        }
+    /next i
+    
+    /docommand /${echo} -BankFind: Best:<${itemBestReturn}> -> (${itemReturn})
+    
+/return ${itemReturn}
+
+Sub strArrayArg(string strArrayArg, string strAdd, strSeparator)
+    /if (!${strArrayArg.Length}) {
+        /varset strArrayArg ${strAdd}
+    } else {
+        /varset strArrayArg ${strArrayArg}${strSeparator}${strAdd}
+    }
+/return ${strArrayArg}
+
+Sub AugType(int bitTotal, int typeSearch)
+   | /declare bitTotal int local 133
+   /declare augTypes[MAX_AUG_SLOTS] int local
+   /declare i int local 1
+   /declare augType int local 1
+
+   :loop
+      /if (${bitTotal} <= 0) {
+         /if (!${slot}) {
+            /echo No augs
+         } else {
+            /return FALSE
+         }
+         | Done
+      } else /if (${bitTotal} == 1) {
+         | Found a type 1
+         /varset augTypes[${i}] 1
+         | Done
+      } else /if (${bitTotal} == 2) {
+         | Found the type!
+         /varcalc augTypes[${i}] ${augType} + 1
+         | Done
+      } else {
+         /if (${Math.Calc[${bitTotal} % 2]} == 1) {
+            | We found one of multiple types...
+            /varset augTypes[${i}] ${augType}
+            /varcalc bitTotal ${bitTotal} - 1
+            /varcalc i ${i} + 1
+         }
+         /if (${bitTotal} != 2) {
+            /varcalc bitTotal ${bitTotal} / 2
+            /varcalc augType ${augType} + 1
+         }
+         /goto :loop
+      }
+
+   /for i 1 to MAX_AUG_SLOTS
+      /if (${augTypes[${i}]} > 0) {
+        /if (${typeSearch}) {
+            /if (${augTypes[${i}]} == ${typeSearch}) /return TRUE
+        } else {
+            /echo Aug${i}: ${augTypes[${i}]}
+        }
+      }
+   /next i
+
+/return FALSE
