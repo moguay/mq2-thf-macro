@@ -77,11 +77,11 @@ Sub BankFind(string strFindName, string strFindSlot, string strFindType, int int
         
         /if (${itemName.Length}) {
             | Score item
-            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].SpellDamage} * 5)
-            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].HealAmount} * 5)
+            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${itemName}].AC} * 5) + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${FindItemBank[${itemName}].AC} * 5) + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${FindItemBank[${itemName}].AC} * 5) + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${FindItemBank[${itemName}].Mana}     + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].SpellDamage} * 5)
+            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${FindItemBank[${itemName}].Mana}     + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].HealAmount} * 5)
             
             | Aug Slot & Type finder
             |   Item Slot                                              && Item Type
@@ -218,11 +218,11 @@ Sub getAugBank(string strAugName)
                 }
             }
             
-            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].SpellDamage} * 5)
-            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].HealAmount} * 5)
+            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${FindItemBank[${strAugName.Arg[${i},|]}].Mana}     + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].SpellDamage} * 5)
+            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${FindItemBank[${strAugName.Arg[${i},|]}].Mana}     + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].HealAmount} * 5)
 
             /nomodkey /ctrl /itemnotify ${FindItemBank[${strAugName.Arg[${i},|]}].InvSlot} leftmouseup
             /delay 5
