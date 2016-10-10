@@ -4,6 +4,49 @@ Sub Main
     /if (!${Defined[echo]})         /declare echo       string    outer echo
     /if (!${Defined[broadcast]})    /declare broadcast  int       outer 1
     
+    | Set Self Echo or Cecho advanced color echo plugin
+    | Color code format: "[+r+] or [+R+]"
+    | 'y'ellow, 'o'range, 'g'reen, bl'u'e, 'r'ed, 't'eal, 'b'lack (none),
+    | 'm'agenta, 'p'urple, 'w'hite, 'x'=back to default
+    /if (!${Defined[echo]})                                                     /declare echo string global
+    /varset echo                                                                                                                                ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},cecho,echo]}
+
+    /if (!${Defined[CError]})                                                   /declare CError string global
+    /if (!${Defined[CCritical]})                                                /declare CCritical string global
+    /if (!${Defined[CWarning]})                                                 /declare CWarning string global
+    /if (!${Defined[CNotice]})                                                  /declare CNotice string global
+    /if (!${Defined[CNormal]})                                                  /declare CNormal string global
+    /if (!${Defined[CAction]})                                                  /declare CAction string global
+    /if (!${Defined[Cy]})                                                       /declare Cy string global
+    /if (!${Defined[Co]})                                                       /declare Co string global
+    /if (!${Defined[Cg]})                                                       /declare Cg string global
+    /if (!${Defined[Cu]})                                                       /declare Cu string global
+    /if (!${Defined[Cr]})                                                       /declare Cr string global
+    /if (!${Defined[Ct]})                                                       /declare Ct string global
+    /if (!${Defined[Cb]})                                                       /declare Cb string global
+    /if (!${Defined[Cm]})                                                       /declare Cm string global
+    /if (!${Defined[Cp]})                                                       /declare Cp string global
+    /if (!${Defined[Cw]})                                                       /declare Cw string global
+    /if (!${Defined[Cx]})                                                       /declare Cx string global
+
+    /varset CError                                                                                                                              ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+r+],]}
+    /varset CCritical                                                                                                                           ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+m+],]}
+    /varset CWarning                                                                                                                            ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+y+],]}
+    /varset CNotice                                                                                                                             ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+t+],]}
+    /varset CNormal                                                                                                                             ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+x+],]}
+    /varset CAction                                                                                                                             ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+u+],]}
+    /varset Cy                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+y+],]}
+    /varset Co                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+o+],]}
+    /varset Cg                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+g+],]}
+    /varset Cu                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+u+],]}
+    /varset Cr                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+r+],]}
+    /varset Ct                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+t+],]}
+    /varset Cb                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+b+],]}
+    /varset Cm                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+m+],]}
+    /varset Cp                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+p+],]}
+    /varset Cw                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+w+],]}
+    /varset Cx                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+x+],]}
+    
     /declare i int local
     
     /if (${broadcast}==1) /docommand /${echo} [InventoryAug]: INC...
@@ -325,7 +368,8 @@ Sub InternalMoveToTimed(int y, int x, string delay)
         /declare delayTimer timer local ${Math.Calc[${statDistance} / (185 / 7)]}s
     }
 
-    /moveto loc ${y} ${x}
+    /if (${Math.Distance[${y},${x},${Me.Z}]} <= ${MoveTo.ArrivalDist}) /moveto loc ${y} ${x}
+    
 :waitUntilMovingFinished
     /if (${Me.Speed} > ${maxSpeed}) {
         | Recalc real MaxSpeed and Delay
