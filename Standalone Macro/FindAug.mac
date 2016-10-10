@@ -368,7 +368,7 @@ Sub InternalMoveToTimed(int y, int x, string delay)
         /declare delayTimer timer local ${Math.Calc[${statDistance} / (185 / 7)]}s
     }
 
-    /if (${Math.Distance[${y},${x},${Me.Z}]} <= ${MoveTo.ArrivalDist}) /moveto loc ${y} ${x}
+    /if (${Math.Distance[${y},${x},${Me.Z}]} > ${MoveTo.ArrivalDist}) /moveto loc ${y} ${x}
     
 :waitUntilMovingFinished
     /if (${Me.Speed} > ${maxSpeed}) {
