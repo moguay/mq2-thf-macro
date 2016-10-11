@@ -179,7 +179,7 @@ Sub BankFind(string strFindName, string strFindSlot, string strFindType, int int
                 /if (${Select[${intAugType},8,17,18]}) {
                     | HOH Craft AUG analysis
                     /varset HohQuestAugName Arm of Chaos|Belt of Chaos|Chest of Chaos|Cloak of Chaos|Ear of Chaos|Ear of Chaos|Finger of Chaos|Finger of Chaos|Foot of Chaos|Hand of Chaos|Head of Chaos|Leg of Chaos|Mask of Chaos|Necklace of Chaos|Shoulder of Chaos|Talisman of Chaos|Trinket of Chaos|Wrist of Chaos|Wrist of Chaos
-                    /varset HohQuestAugType arms|waist|chest|back|leftear|rightear|leftfinger|feet|hands|head|legs|face|neck|shoulder|ranged|charm|leftwrist|rightwrist
+                    /varset HohQuestAugType arms|waist|chest|back|leftear|rightear|leftfinger|leftfinger|feet|hands|head|legs|face|neck|shoulder|ranged|charm|leftwrist|rightwrist
                     /if (${HohQuestAugName.Find[${itemName}]}) {
                         /for j 1 to ${Math.Calc[${HohQuestAugName.Count[|]}+1]}
                             /if (${itemName.Lower.Equal[${HohQuestAugName.Arg[${j},|].Lower}]} && ${strFindSlot.Lower.Equal[${HohQuestAugType.Arg[${j},|].Lower}]}) {
