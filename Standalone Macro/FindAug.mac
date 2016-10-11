@@ -1,9 +1,11 @@
+#turbo 20
 #define MAX_AUG_SLOTS 10
 
 Sub Main
+
     /if (!${Defined[echo]})         /declare echo       string    outer echo
     /if (!${Defined[broadcast]})    /declare broadcast  int       outer 1
-    
+
     | Set Self Echo or Cecho advanced color echo plugin
     | Color code format: "[+r+] or [+R+]"
     | 'y'ellow, 'o'range, 'g'reen, bl'u'e, 'r'ed, 't'eal, 'b'lack (none),
@@ -46,46 +48,71 @@ Sub Main
     /varset Cp                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+p+],]}
     /varset Cw                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+w+],]}
     /varset Cx                                                                                                                                  ${If[${Plugin[MQ2CEcho].Name.Equal[MQ2CEcho]},[+x+],]}
-    
+
     /declare i int local
-    
-    /if (${broadcast}==1) /docommand /${echo} [InventoryAug]: INC...
+
+    /if (${broadcast}==1) /docommand /${echo} [InventoryAug]: INC... ${If[${Param0.Equal[Force]},~forced~,~normal~]}
     /for i 0 to 20
-        /call MissingAugs ${InvSlot[${i}].Name}
+        /call MissingAugs "${InvSlot[${i}].Name}" "${Param0}"
     /next i
     /if (${broadcast}==1) /docommand /${echo} [InventoryAug]: Done.
 /return
 
 Sub MissingAugs(string SLOTNAME, string argCMD)
 
+    /declare scoreThreshold int local 200
+
     /declare x int local
     /declare range int local ${Me.Inventory[${SLOTNAME}].Augs}
 
     /declare itemScore int local
+    /declare ItemSolventCount int local 0
+    /declare ItemSolventList string local
+    /varset ItemSolventList
 
     /declare bct_command string local bcaa
 
     /for x 1 to ${range}
         /if (${Me.Inventory[${SLOTNAME}].AugSlot${x}}) {
             /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5) 
+            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
             |.BackstabDamage
             /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
             /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].SpellDamage} * 5)
             /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].HealAmount} * 5)
-                
+
             /if (!${Bool[${Me.Inventory[${SLOTNAME}].Item[${x}]}]} && ${Me.Inventory[${SLOTNAME}].AugSlot${x}}) {
-                /if (${broadcast}==1) /docommand /${echo} [Missing Augs]: ${Cg}${SLOTNAME}${Cx} Slot:${Cr}${x}${Cx} - Type:${Cr}${Me.Inventory[${SLOTNAME}].AugSlot${x}}${Cx} - Score:${Cm}${itemScore}${Cx}
-                /call BankFind "" "${SLOTNAME}" "Augmentation" ${Me.Inventory[${SLOTNAME}].AugSlot${x}} ${argCMD}
-                
+                /if (${broadcast}==1) /docommand /${echo} [Missing Augs]: ${Cg}${SLOTNAME}${Cx} Slot:${Cr}${x}${Cx} - Type:${Cr}${Me.Inventory[${SLOTNAME}].AugSlot${x}}${Cx} - Score:${Cm}${itemScore}${Cx} - Name:${Cr}empty${Cx}
+                /call BankFind "" "${SLOTNAME}" "Augmentation" "${Me.Inventory[${SLOTNAME}].AugSlot${x}}" ${argCMD}
+
             } else /if (${Bool[${Me.Inventory[${SLOTNAME}].Item[${x}]}]} && ${Me.Inventory[${SLOTNAME}].AugSlot${x}}) {
-                /if (${itemScore} < 200) {
-                    /if (${broadcast}==1) /docommand /${echo} [Old Augs]: ${Cg}${SLOTNAME}${Cx} Slot:${Cr}${x}${Cx} - Type:${Cr}${Me.Inventory[${SLOTNAME}].AugSlot${x}}${Cx} - Score:${Cm}${itemScore}${Cx}
-                    /call BankFind "" "${SLOTNAME}" "Augmentation" ${Me.Inventory[${SLOTNAME}].AugSlot${x}} ${argCMD}
+                /if (${itemScore} < ${scoreThreshold}) {
+                | /if ((${Me.Inventory[${SLOTNAME}].AugSlot${x}} == 16 && ${itemScore} < 200) || (${Me.Inventory[${SLOTNAME}].AugSlot${x}} != 16 && ${itemScore} < 200)) {
+                    /if (${broadcast}==1) /docommand /${echo} [Old Augs]: ${Cg}${SLOTNAME}${Cx} Slot:${Cr}${x}${Cx} - Type:${Cr}${Me.Inventory[${SLOTNAME}].AugSlot${x}}${Cx} - Score:${Cm}${itemScore}${Cx} - Name:${Cg}${Me.Inventory[${SLOTNAME}].Item[${x}]}${Cx}
+
+                    /if (${argCMD.Equal[Force]}) {
+                        /if (!${Select[${SLOTNAME},mainHand,offhand,ranged,ammo]}) {
+                            | Prepare to buy solvent
+                            /varcalc ItemSolventCount ${ItemSolventCount} + 1
+                            /if (!${ItemSolventList.Length}) {
+                                /varset ItemSolventList ${Me.Inventory[${SLOTNAME}].Item[${x}]}|${itemScore}
+                            } else {
+                                /varset ItemSolventList ${ItemSolventList}#${Me.Inventory[${SLOTNAME}].Item[${x}]}|${itemScore}
+                            }
+                        }
+                    }
+
+                    /if (!${Select[${SLOTNAME},mainHand,offhand,ammo]}) {
+                        /call BankFind "" "${SLOTNAME}" "Augmentation" "${Me.Inventory[${SLOTNAME}].AugSlot${x}}" ${argCMD}
+                    } else {
+                        /call BankFind "" "${SLOTNAME}" "Augmentation" "${Me.Inventory[${SLOTNAME}].AugSlot${x}}" ""
+                    }
                 }
             }
         }
     /next x
+
+    /call getAugSolvent ${ItemSolventCount} "${ItemSolventList}"
 
 /return
 
@@ -117,7 +144,7 @@ Sub BankFind(string strFindName, string strFindSlot, string strFindType, int int
             /varset itemName ${Me.Bank[${i}]}
             }
         }
-        
+
         /if (${itemName.Length}) {
             | Score item
             /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${itemName}].AC} * 5) + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].Attack} * 5)
@@ -125,7 +152,7 @@ Sub BankFind(string strFindName, string strFindSlot, string strFindType, int int
             /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${FindItemBank[${itemName}].AC} * 5) + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].Attack} * 5)
             /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${FindItemBank[${itemName}].Mana}     + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].SpellDamage} * 5)
             /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${FindItemBank[${itemName}].Mana}     + ${FindItemBank[${itemName}].HP} + (${FindItemBank[${itemName}].HealAmount} * 5)
-            
+
             | Aug Slot & Type finder
             |   Item Slot                                              && Item Type
             /if (${FindItemBank[${itemName}].WornSlot[${strFindSlot}]} && ${FindItemBank[${itemName}].Type.Equal[${strFindType}]}) {
@@ -136,7 +163,7 @@ Sub BankFind(string strFindName, string strFindSlot, string strFindType, int int
                         /if ((${itemName.Find[Radiant ]} || ${itemName.Find[Glowing ]})) {
                             /varset getAugBankName ${itemName}
                         }
-            
+
                         | EqWindow Report
                         /call strArrayArg "${itemReturn}" "${itemName}" "|"
                         /varset itemReturn ${Macro.Return}
@@ -260,12 +287,12 @@ Sub getAugBank(string strAugName)
                     /return FALSE
                 }
             }
-            
-            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${FindItemBank[${strAugName.Arg[${i},|]}].AC} * 5) + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].Attack} * 5)
-            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${FindItemBank[${strAugName.Arg[${i},|]}].Mana}     + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].SpellDamage} * 5)
-            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${FindItemBank[${strAugName.Arg[${i},|]}].Mana}     + ${FindItemBank[${strAugName.Arg[${i},|]}].HP} + (${FindItemBank[${strAugName.Arg[${i},|]}].HealAmount} * 5)
+
+            /if (${Select[${Me.Class.ShortName},WAR,SHD,PAL]})                  /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},ROG]})                          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},BER,BRD,MNK,RNG,BST]})          /varcalc itemScore (${Me.Inventory[${SLOTNAME}].Item[${x}].AC} * 5) + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].Attack} * 5)
+            /if (${Select[${Me.Class.ShortName},DRU,ENC,MAG,WIZ,NEC]})          /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].SpellDamage} * 5)
+            /if (${Select[${Me.Class.ShortName},CLR,SHM]})                      /varcalc itemScore ${Me.Inventory[${SLOTNAME}].Item[${x}].Mana}     + ${Me.Inventory[${SLOTNAME}].Item[${x}].HP} + (${Me.Inventory[${SLOTNAME}].Item[${x}].HealAmount} * 5)
 
             /nomodkey /ctrl /itemnotify ${FindItemBank[${strAugName.Arg[${i},|]}].InvSlot} leftmouseup
             /delay 5
@@ -274,7 +301,7 @@ Sub getAugBank(string strAugName)
             /if (${Cursor.ID}) {
                 /autoinventory
                 /call CheckCursor
-                
+
                 /docommand /${echo} Bank: get aug <${strAugName.Arg[${i},|]}|${itemScore}>
             } else {
                 /call CheckCursor
@@ -287,6 +314,96 @@ Sub getAugBank(string strAugName)
     /notify BigBankWnd DoneButton leftmouseup
     | Re open bags
     /call openBags
+/return ${strAugName}
+
+Sub getAugSolvent(int intQTYToBuy, string ItemSolventList)
+
+    /if (!${intQTYToBuy}) /return TRUE
+
+    /declare i int local
+    /declare j int local
+    /declare e int local
+    /declare intWindow int local
+    /declare strMerchantName string local Merchant
+    /declare intItemInvCount int local
+    | /declare itemScore int local
+
+    /declare OldMoveToDist  int     local   ${MoveTo.ArrivalDist}
+
+    | Guild zone filter
+    /if (${Zone.ID} != 345) {
+        /if (${broadcast}==1) /docommand /${echo} [getAugSolvent] Get: Warning, need to be on GUILDHALL
+        /return ZONE
+    }
+
+    /if (${Math.Distance[-32,-107,${Me.Z}]} > 40) {
+        /if (${broadcast}==1) /docommand /${echo} [getAugSolvent] Get: Warning, need to be near Solvent Merchant
+        /return ZONE
+    }
+
+    /call CheckCursor
+
+    /if (!${Me.FreeInventory}) {
+        /if (${broadcast}==1) /docommand /${echo} [getAugSolvent] Get: Warning, need free inventory
+        /return FALSE
+    }
+
+    /if (!${Spawn[NPC ${strMerchantName}].ID} || ${Spawn[NPC ${strMerchantName}].Distance} > 40) {
+        /if (${broadcast}==1) /docommand /${echo} [getAugSolvent] Get: Warning, no Merchant found
+        /return FALSE
+    }
+
+    /target id ${Spawn[NPC ${strMerchantName}].ID}
+    /delay 5 (${Target.ID} == ${Spawn[NPC ${strMerchantName}].ID})
+
+    /if (${Target.Distance} > 18) {
+        /squelch /moveto dist 18
+        /delay 5
+        /call InternalMoveToTimed ${Spawn[id ${Target.ID}].Y} ${Spawn[id ${Target.ID}].X} 5s
+        /squelch /moveto dist ${OldMoveToDist}
+        /if (!${Macro.Return}) {
+            /if (${broadcast}==1) ${broadcastMsg} [getAugSolvent] >>> ** Moving Problem ** <<<
+            /return FALSE
+        }
+    }
+
+    /call openBags
+
+    /if (!${Window[MerchantWnd].Open}) {
+        /nomodkey /click right target
+        /delay 5
+        /delay 2s (${Window[MerchantWnd].Open})
+        /if (!${Window[MerchantWnd].Open}) {
+            /if (${broadcast}==1) ${broadcastMsg} [getAugSolvent] >>> ** Merchant window PROBLEM ** <<<
+            /return FALSE
+        }
+    }
+
+    /varset intWindow ${Window[MerchantWnd].Child[itemList].List[Augmentation Solvent,2]}
+    /if (!${intWindow}) {
+        /if (${broadcast}==1) /${chat} Could not find: Augmentation Solvent
+        /return FALSE
+    } else {
+        /notify MerchantWnd itemList listselect ${intWindow}
+        /notify MerchantWnd itemList leftmouse ${intWindow}
+        /delay 2
+        /buyitem ${intQTYToBuy}
+        /if (${ItemSolventList.Find[#]}) {
+            /docommand /${echo} Merchant: get (${intQTYToBuy}) solvent for manual remove <${ItemSolventList.Replace[#, ]}>
+        } else {
+            /docommand /${echo} Merchant: get (${intQTYToBuy}) solvent for manual remove <${ItemSolventList}>
+        }
+    }
+
+    /delay 20
+
+    | Close BANK
+    /notify MerchantWnd MW_Done_Button leftmouseup
+    | Re open bags
+    /call openBags
+
+    /call CheckCursor
+
 /return ${strAugName}
 
 Sub strArrayArg(string strArrayArg, string strAdd, strSeparator)
@@ -369,7 +486,7 @@ Sub InternalMoveToTimed(int y, int x, string delay)
     }
 
     /if (${Math.Distance[${y},${x},${Me.Z}]} > ${MoveTo.ArrivalDist}) /moveto loc ${y} ${x}
-    
+
 :waitUntilMovingFinished
     /if (${Me.Speed} > ${maxSpeed}) {
         | Recalc real MaxSpeed and Delay
