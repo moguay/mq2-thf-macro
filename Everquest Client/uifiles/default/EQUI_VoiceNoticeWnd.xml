@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<XML ID="EQInterfaceDefinitionLanguage">
+  <Schema xmlns="EverQuestData" xmlns:dt="EverQuestDataTypes" />
+  <Label item="VNW_ReminderLabel">
+    <ScreenID>VNW_NoticeLabel</ScreenID>
+    <RelativePosition>true</RelativePosition>
+    <Location>
+      <X>5</X>
+      <Y>3</Y>
+    </Location>
+    <Size>
+      <CX>194</CX>
+      <CY>93</CY>
+    </Size>
+    <Text>EverQuest now has an integrated in-game voice chat system.  You can enable and access other settings from the options page,
+		voice Chat tab.  Or you can click Options button below.</Text>
+    <TextColor>
+      <R>255</R>
+      <G>255</G>
+      <B>255</B>
+    </TextColor>
+    <NoWrap>false</NoWrap>
+    <AlignCenter>false</AlignCenter>
+    <AlignRight>false</AlignRight>
+  </Label>
+  <Button item="VNW_NeverShowAgainCheckbox">
+    <ScreenID>VNW_NeverShowAgainCheckbox</ScreenID>
+    <RelativePosition>true</RelativePosition>
+    <Location>
+      <X>5</X>
+      <Y>156</Y>
+    </Location>
+    <Size>
+      <CX>12</CX>
+      <CY>12</CY>
+    </Size>
+    <Style_Transparent>false</Style_Transparent>
+    <Style_Checkbox>true</Style_Checkbox>
+    <Text />
+    <TextColor>
+      <R>255</R>
+      <G>255</G>
+      <B>255</B>
+    </TextColor>
+    <ButtonDrawTemplate>
+      <Normal>A_CheckBoxNormal</Normal>
+      <Pressed>A_CheckBoxPressed</Pressed>
+    </ButtonDrawTemplate>
+  </Button>
+  <Label item="VNW_NeverShowAgainLabel">
+    <ScreenID>VNW_NeverShowAgainLabel</ScreenID>
+    <RelativePosition>true</RelativePosition>
+    <Location>
+      <X>28</X>
+      <Y>156</Y>
+    </Location>
+    <Size>
+      <CX>185</CX>
+      <CY>25</CY>
+    </Size>
+    <Text>Do not show this window again.</Text>
+    <TextColor>
+      <R>255</R>
+      <G>255</G>
+      <B>255</B>
+    </TextColor>
+    <NoWrap>true</NoWrap>
+    <AlignCenter>false</AlignCenter>
+    <AlignRight>false</AlignRight>
+  </Label>
+  <Button item="VNW_OkButton">
+    <ScreenID>VNW_OkButton</ScreenID>
+    <RelativePosition>true</RelativePosition>
+    <Location>
+      <X>68</X>
+      <Y>179</Y>
+    </Location>
+    <Size>
+      <CX>75</CX>
+      <CY>20</CY>
+    </Size>
+    <Style_VScroll>false</Style_VScroll>
+    <Style_HScroll>false</Style_HScroll>
+    <Style_Transparent>false</Style_Transparent>
+    <Style_Checkbox>false</Style_Checkbox>
+    <Text>Ok</Text>
+    <TextColor>
+      <R>255</R>
+      <G>255</G>
+      <B>255</B>
+    </TextColor>
+    <ButtonDrawTemplate>
+      <Normal>A_SmallBtnNormal</Normal>
+      <Pressed>A_SmallBtnPressed</Pressed>
+      <Flyby>A_SmallBtnFlyby</Flyby>
+      <Disabled>A_SmallBtnDisabled</Disabled>
+      <PressedFlyby>A_SmallBtnPressedFlyby</PressedFlyby>
+    </ButtonDrawTemplate>
+  </Button>
+  <Button item="VNW_VoiceOptionsButton">
+		<ScreenID>VNW_VoiceOptionsButton</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<EQType>voicechat/OptionsButton</EQType>
+		<Location>
+			<X>5</X>
+			<Y>110</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>20</CY>
+		</Size>
+		<Style_VScroll>false</Style_VScroll>
+		<Style_HScroll>false</Style_HScroll>
+		<Style_Transparent>false</Style_Transparent>
+		<Style_Checkbox>false</Style_Checkbox>
+		<Text>Options</Text>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<ButtonDrawTemplate>
+			<Normal>A_BigBtnNormal</Normal>
+			<Pressed>A_BigBtnPressed</Pressed>
+			<Flyby>A_BigBtnFlyby</Flyby>
+			<Disabled>A_BigBtnDisabled</Disabled>
+			<PressedFlyby>A_BigBtnPressedFlyby</PressedFlyby>
+		</ButtonDrawTemplate>
+	</Button>
+  <Screen item="VoiceNoticeWnd">
+    <RelativePosition>false</RelativePosition>
+    <Location>
+      <X>250</X>
+      <Y>200</Y>
+    </Location>
+    <Size>
+      <CX>220</CX>
+      <CY>230</CY>
+    </Size>
+    <Text>Voice Chat Notification Window</Text>
+    <Style_VScroll>false</Style_VScroll>
+    <Style_HScroll>false</Style_HScroll>
+    <Style_Transparent>false</Style_Transparent>
+    <DrawTemplate>WDT_Rounded</DrawTemplate>
+    <Style_Titlebar>true</Style_Titlebar>
+    <Style_Closebox>false</Style_Closebox>
+    <Style_Minimizebox>false</Style_Minimizebox>
+    <Style_Border>true</Style_Border>
+    <Style_Sizable>false</Style_Sizable>
+    <Pieces>VNW_ReminderLabel</Pieces>
+    <Pieces>VNW_NeverShowAgainCheckbox</Pieces>
+    <Pieces>VNW_NeverShowAgainLabel</Pieces>
+    <Pieces>VNW_VoiceOptionsButton</Pieces>
+    <Pieces>VNW_OkButton</Pieces>
+  </Screen>
+</XML>

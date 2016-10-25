@@ -1,0 +1,764 @@
+<?xml version = "1.0"?>
+<XML ID = "EQInterfaceDefinitionLanguage">
+	<Schema xmlns = "EverQuestData" xmlns:dt = "EverQuestDataTypes"/>
+
+<!-- Graphics By: t.king -->
+<!-- Code by: Remelio Gemweaver -->
+<!-- 9-slot  spell mod/graphics by: Jolo / Xegony server, Sep 2004 -->
+<!-- 10-slot spell mod/graphics by: Jolo / Xegony server, Nov 2007 -->
+<!-- http://www.eqinterface.com/downloads/fileinfo.php?id=3745 -->
+
+<!-- TK Graphics -->
+
+	<TextureInfo item = "tkspellbar10.tga">
+		<Size>
+			<CX>256</CX>
+			<CY>256</CY>
+			<!-- note to self: max image size is 256, can't make 296x128, etc -->
+			<!-- note to self: 256x256 required a declared alpha channel  --> 
+		</Size>
+	</TextureInfo>
+	<Ui2DAnimation item = "TK_CastBar01">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>0</X>
+				<Y>0</Y>
+			</Location>
+			<Size>
+				<CX>57</CX>
+				<CY>256</CY>
+			</Size>
+			<Hotspot>
+				<X>0</X>
+				<Y>0</Y>
+			</Hotspot>
+		</Frames>
+	</Ui2DAnimation>
+	<Ui2DAnimation item = "TK_CastBar02">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>59</X>
+				<Y>0</Y>
+			</Location>
+			<Size>
+				<CX>57</CX>
+				<CY>177</CY>  <!-- was 137 + 40-->
+			</Size>
+			<Hotspot>
+				<X>0</X>
+				<Y>0</Y>
+			</Hotspot>
+		</Frames>
+	</Ui2DAnimation>
+
+	<Ui2DAnimation item = "TK_SpellGemHolder">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>120</X>
+				<Y>174</Y>
+			</Location>
+			<Size>
+				<CX>28</CX>
+				<CY>28</CY>
+			</Size>
+		</Frames>
+	</Ui2DAnimation>
+
+	<Ui2DAnimation item = "TK_SpellGemBackground">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>120</X>
+				<Y>144</Y>
+			</Location>
+			<Size>
+				<CX>28</CX>
+				<CY>28</CY>
+			</Size>
+		</Frames>
+	</Ui2DAnimation>
+
+	<Ui2DAnimation item = "TK_SpellGemHighlight">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>120</X>    
+				<Y>204</Y>   
+			</Location>
+			<Size>
+				<CX>28</CX>
+				<CY>28</CY>
+			</Size>
+		</Frames>
+	</Ui2DAnimation>
+	<Ui2DAnimation item = "TK_SpellBookOpening">
+		<Cycle>true</Cycle>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>228</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>2120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>144</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>172</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>200</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>2120</Duration>
+		</Frames>
+
+	</Ui2DAnimation>
+	<Ui2DAnimation item = "TK_SpellBookClosing">
+		<Cycle>true</Cycle>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>172</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>144</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>228</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>2120</Duration>
+		</Frames>
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>200</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+			<Duration>2120</Duration>
+		</Frames>
+	</Ui2DAnimation>
+
+	<Ui2DAnimation item = "TK_SpellBookOpen">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>200</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+		</Frames>
+	</Ui2DAnimation>
+	<Ui2DAnimation item = "TK_SpellBookClosed">
+		<Frames>
+			<Texture>tkspellbar10.tga</Texture>
+			<Location>
+				<X>150</X>
+				<Y>228</Y>
+			</Location>
+			<Size>
+				<CX>26</CX>
+				<CY>26</CY>
+			</Size>
+		</Frames>
+	</Ui2DAnimation>
+
+
+<!-- End of Graphics -->
+
+	<SpellGem item = "CSPW_Spell0">
+		<ScreenID>CSPW_Spell0</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>14</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell1">
+		<ScreenID>CSPW_Spell1</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>54</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell2">
+		<ScreenID>CSPW_Spell2</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>94</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell3">
+		<ScreenID>CSPW_Spell3</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>134</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell4">
+		<ScreenID>CSPW_Spell4</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>174</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell5">
+		<ScreenID>CSPW_Spell5</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>214</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell6">
+		<ScreenID>CSPW_Spell6</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>254</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell7">
+		<ScreenID>CSPW_Spell7</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>294</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell8">
+		<ScreenID>CSPW_Spell8</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>334</Y> <!-- was 294 (+40) -->
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+	<SpellGem item = "CSPW_Spell9">
+		<ScreenID>CSPW_Spell9</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>24</X>
+			<Y>374</Y>
+		</Location>
+		<Size>
+			<CX>28</CX>
+			<CY>28</CY>
+		</Size>
+		<SpellGemDrawTemplate>
+			<Highlight>TK_SpellGemHighlight</Highlight>
+			<Background>TK_SpellGemBackground</Background>
+			<Holder>TK_SpellGemHolder</Holder>
+		</SpellGemDrawTemplate>
+		<SpellIconOffsetX>2</SpellIconOffsetX>
+		<SpellIconOffsetY>2</SpellIconOffsetY>
+	</SpellGem>
+
+	<Button item = "CSPW_SpellBook">
+		<ScreenID>CSPW_SpellBook</ScreenID>
+		<!--<Font>3</Font>-->
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>7</X>
+			<Y>406</Y>  <!-- was 366 (+40) -->
+		</Location>
+		<Size>
+			<CX>26</CX>
+			<CY>26</CY>
+		</Size>
+		<Style_Transparent>True</Style_Transparent>
+		<TooltipReference>Opens and closes Your Spellbook</TooltipReference>
+		<Style_Checkbox>true</Style_Checkbox>
+		<!--<RadioGroup/>-->
+		<ButtonDrawTemplate>
+			<Normal>TK_SpellBookClosed</Normal>  
+			<Pressed>TK_SpellBookOpen</Pressed>  
+			<Flyby>TK_SpellBookOpening</Flyby>
+			<PressedFlyby>TK_SpellBookClosing</PressedFlyby>
+		</ButtonDrawTemplate>
+	</Button>
+
+	<Label item ="CSPW_SpellName0">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>11</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>60</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName1">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>51</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>61</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName2">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>91</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>62</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName3">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>131</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>63</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName4">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>171</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>64</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName5">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>211</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>65</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+	<Label item ="CSPW_SpellName6">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>251</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>66</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+
+	<Label item ="CSPW_SpellName7">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>291</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>67</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+
+	<Label item ="CSPW_SpellName8">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>331</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>133</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+
+	<Label item ="CSPW_SpellName9">
+		<ScreenID/>
+		<Font>1</Font>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>59</X>
+			<Y>371</Y>
+		</Location>
+		<Size>
+			<CX>50</CX>
+			<CY>35</CY>
+		</Size>
+		<EQType>138</EQType>
+		<TextColor>
+				<R>172</R>
+				<G>156</G>
+				<B>127</B>
+		</TextColor>
+		<NoWrap>false</NoWrap>
+		<AlignCenter>false</AlignCenter>
+		<AlignRight>false</AlignRight>
+	</Label>
+
+
+	<StaticAnimation item = "CSPW_Back1">
+		<ScreenID>CSPW_Back1</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>0</X>
+			<Y>0</Y>
+		</Location>
+		<Size>
+			<CX>57</CX>
+			<CY>256</CY>
+		</Size>
+		<Animation>TK_CastBar01</Animation>
+	</StaticAnimation>
+	<StaticAnimation item = "CSPW_Back2">
+		<ScreenID>CSPW_Back2</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>0</X>
+			<Y>256</Y>
+		</Location>
+		<Size>
+			<CX>57</CX>
+			<CY>177</CY>
+		</Size>
+		<Animation>TK_CastBar02</Animation>
+	</StaticAnimation>
+
+	<Button item = "CSPW_Unclickable">
+		<ScreenID>Unclickable</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<Location>
+			<X>11</X>
+			<Y>0</Y>
+		</Location>
+		<Size>
+			<CX>99</CX>
+			<CY>433</CY>
+		</Size>
+		<Style_Transparent>True</Style_Transparent>
+		<ButtonDrawTemplate>
+		</ButtonDrawTemplate>
+	</Button>
+
+	<Screen item = "CastSpellWnd">
+		<!--<ScreenID/>-->
+		<!--<Font/>-->
+		<RelativePosition>false</RelativePosition>
+		<Location>
+			<X>0</X>
+			<Y>25</Y>
+		</Location>
+		<Size>
+			<CX>109</CX>
+			<CY>433</CY>  <!-- was 393 (+40) -->
+		</Size>
+		<Text>Spells</Text>
+		<Style_Transparent>true</Style_Transparent>
+		<TooltipReference>Allows you to cast your memorized spells</TooltipReference>
+		<DrawTemplate>WDT_RoundedNoTitle</DrawTemplate>
+		<Style_Titlebar>false</Style_Titlebar>
+		<Style_Closebox>false</Style_Closebox>
+		<Style_Minimizebox>false</Style_Minimizebox>
+		<Style_Border>false</Style_Border>
+		<Style_Sizable>false</Style_Sizable>
+		<Pieces>CSPW_Unclickable</Pieces>
+
+		<Pieces>CSPW_Back1</Pieces>
+		<Pieces>CSPW_Back2</Pieces>
+
+		<Pieces>CSPW_Spell0</Pieces>
+		<Pieces>CSPW_SpellName0</Pieces>
+		<Pieces>CSPW_Spell1</Pieces>
+		<Pieces>CSPW_SpellName1</Pieces>
+		<Pieces>CSPW_Spell2</Pieces>
+		<Pieces>CSPW_SpellName2</Pieces>
+		<Pieces>CSPW_Spell3</Pieces>
+		<Pieces>CSPW_SpellName3</Pieces>
+		<Pieces>CSPW_Spell4</Pieces>
+		<Pieces>CSPW_SpellName4</Pieces>
+		<Pieces>CSPW_Spell5</Pieces>
+		<Pieces>CSPW_SpellName5</Pieces>
+		<Pieces>CSPW_Spell6</Pieces>
+		<Pieces>CSPW_SpellName6</Pieces>
+		<Pieces>CSPW_Spell7</Pieces>
+		<Pieces>CSPW_SpellName7</Pieces>
+		<Pieces>CSPW_Spell8</Pieces>
+		<Pieces>CSPW_SpellName8</Pieces>
+		<Pieces>CSPW_Spell9</Pieces>
+		<Pieces>CSPW_SpellName9</Pieces>
+		<Pieces>CSPW_SpellBook</Pieces>
+		
+	</Screen>
+
+</XML>

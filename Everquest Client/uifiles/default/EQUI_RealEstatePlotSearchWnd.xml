@@ -1,0 +1,193 @@
+<?xml version = "1.0"?>
+<XML ID = "EQInterfaceDefinitionLanguage">
+	<Schema xmlns = "EverQuestData" xmlns:dt = "EverQuestDataTypes"/>
+
+	<Editbox item="REPSW_Search_EditBox">
+		<ScreenID>REPSW_Search_EditBox</ScreenID>
+		<DrawTemplate>WDT_Inner</DrawTemplate>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<LeftAnchorOffset>10</LeftAnchorOffset>
+		<TopAnchorOffset>10</TopAnchorOffset>
+		<RightAnchorOffset>292</RightAnchorOffset>
+		<BottomAnchorOffset>30</BottomAnchorOffset>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Style_Transparent>true</Style_Transparent>
+		<Style_Border>true</Style_Border>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+	</Editbox>
+
+	<Button item="REPSW_Search_Button">
+		<ScreenID>REPSW_Search_Button</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<LeftAnchorOffset>281</LeftAnchorOffset>
+		<TopAnchorOffset>10</TopAnchorOffset>
+		<RightAnchorOffset>209</RightAnchorOffset>
+		<BottomAnchorOffset>30</BottomAnchorOffset>
+		<LeftAnchorToLeft>false</LeftAnchorToLeft>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Style_Transparent>false</Style_Transparent>
+		<Style_Checkbox>false</Style_Checkbox>
+		<TooltipReference>Click here to search for a list of plots by owner name.</TooltipReference>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<ButtonDrawTemplate>
+			<Normal>A_SearchBtnNormal</Normal>
+			<Flyby>A_SearchBtnFlyby</Flyby>
+			<PressedFlyby>A_SearchBtnPressed</PressedFlyby>
+		</ButtonDrawTemplate>
+	</Button>
+    
+    <Button item="REPSW_SelfSearch_Button">
+		<ScreenID>REPSW_SelfSearch_Button</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<TopAnchorOffset>10</TopAnchorOffset>
+		<BottomAnchorOffset>30</BottomAnchorOffset>
+		<LeftAnchorOffset>204</LeftAnchorOffset>
+		<RightAnchorOffset>132</RightAnchorOffset>
+		<LeftAnchorToLeft>false</LeftAnchorToLeft>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Style_Transparent>false</Style_Transparent>
+		<Style_Checkbox>false</Style_Checkbox>
+		<TooltipReference>Click here to search for all plots that you own.</TooltipReference>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<ButtonDrawTemplate>
+			<Normal>A_SelfSearchBtnNormal</Normal>
+			<Flyby>A_SelfSearchBtnFlyby</Flyby>
+			<PressedFlyby>A_SelfSearchBtnPressed</PressedFlyby>
+		</ButtonDrawTemplate>
+    </Button>
+   
+    <Button item="REPSW_VacantPlots_Button">
+		<ScreenID>REPSW_VacantPlots_Button</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<LeftAnchorOffset>127</LeftAnchorOffset>
+		<TopAnchorOffset>10</TopAnchorOffset>
+		<RightAnchorOffset>55</RightAnchorOffset>
+		<BottomAnchorOffset>30</BottomAnchorOffset>
+		<LeftAnchorToLeft>false</LeftAnchorToLeft>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Style_Transparent>false</Style_Transparent>
+		<Style_Checkbox>false</Style_Checkbox>
+		<TooltipReference>Click here to search for a list of plots without owners.</TooltipReference>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<ButtonDrawTemplate>
+			<Normal>A_EmptyPlotsBtnNormal</Normal>
+			<Flyby>A_EmptyPlotsBtnFlyby</Flyby>
+			<PressedFlyby>A_EmptyPlotsBtnPressed</PressedFlyby>
+		</ButtonDrawTemplate>
+	</Button>
+ 
+	<Button item="REPSW_Go_Button">
+		<ScreenID>REPSW_Go_Button</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<LeftAnchorOffset>50</LeftAnchorOffset>
+		<TopAnchorOffset>10</TopAnchorOffset>
+		<RightAnchorOffset>10</RightAnchorOffset>
+		<BottomAnchorOffset>30</BottomAnchorOffset>
+		<LeftAnchorToLeft>false</LeftAnchorToLeft>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Style_Transparent>false</Style_Transparent>
+		<TooltipReference>Click here to display a wisp to the center of the selected plot.</TooltipReference>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<ButtonDrawTemplate>
+			<Normal>A_SmallGoBtnNormal</Normal>
+			<Pressed>A_SmallGoBtnPressed</Pressed>
+			<Flyby>A_SmallGoBtnFlyby</Flyby>
+			<Disabled>A_SmallGoBtnDisabled</Disabled>
+		</ButtonDrawTemplate>
+	</Button>
+	<Listbox item="REPSW_PlotList">
+		<ScreenID>REPSW_PlotList</ScreenID>
+		<DrawTemplate>WDT_Inner</DrawTemplate>
+		<Size>
+			<CX>300</CX>
+			<CY>250</CY>
+		</Size>
+		<TextColor>
+			<R>255</R>
+			<G>255</G>
+			<B>255</B>
+		</TextColor>
+		<Style_Border>true</Style_Border>
+		<Style_VScroll>true</Style_VScroll>
+		<Style_AutoVScroll>true</Style_AutoVScroll>
+		<Columns>
+			<Width>20</Width>
+			<Heading></Heading>
+		</Columns>
+		<Columns>
+			<Width>300</Width>
+			<Heading>Address</Heading>
+		</Columns>
+		<Columns>
+			<Width>100</Width>
+			<Heading>Owner</Heading>
+		</Columns>
+	</Listbox>
+	<HorizontalLayoutBox item="REPSW_Main_Layout">
+		<ScreenID>REPSW_Main_Layout</ScreenID>
+		<RelativePosition>true</RelativePosition>
+		<AutoStretch>true</AutoStretch>
+		<Spacing>2</Spacing>
+		<DrawTemplate>WDT_Inner</DrawTemplate>
+		<Style_Transparent>true</Style_Transparent>
+		<LeftAnchorOffset>10</LeftAnchorOffset>
+		<TopAnchorOffset>40</TopAnchorOffset>
+		<RightAnchorOffset>10</RightAnchorOffset>
+		<BottomAnchorOffset>10</BottomAnchorOffset>
+		<BottomAnchorToTop>false</BottomAnchorToTop>
+		<RightAnchorToLeft>false</RightAnchorToLeft>
+		<Pieces>Listbox:REPSW_PlotList</Pieces>
+	</HorizontalLayoutBox>
+	<Screen item="RealEstatePlotSearchWnd">
+		<RelativePosition>false</RelativePosition>
+		<Location>
+			<X>0</X>
+			<Y>25</Y>
+		</Location>
+		<Size>
+			<CX>500</CX>
+			<CY>200</CY>
+		</Size>
+		<MinHSize>350</MinHSize>
+		<MinVSize>150</MinVSize>
+		<Text>Plot Search</Text>
+		<Style_Transparent>false</Style_Transparent>
+		<DrawTemplate>WDT_Def</DrawTemplate>
+		<Style_Titlebar>true</Style_Titlebar>
+		<Style_Closebox>true</Style_Closebox>
+		<Style_Minimizebox>false</Style_Minimizebox>
+		<Style_Border>true</Style_Border>
+		<Style_Sizable>true</Style_Sizable>
+		<Pieces>REPSW_Search_EditBox</Pieces>
+		<Pieces>REPSW_Search_Button</Pieces>
+		<Pieces>REPSW_SelfSearch_Button</Pieces>
+		<Pieces>REPSW_VacantPlots_Button</Pieces>
+		<Pieces>REPSW_Go_Button</Pieces>
+		<Pieces>HorizontalLayoutBox:REPSW_Main_Layout</Pieces>
+	</Screen>
+</XML>
