@@ -1,11 +1,11 @@
 ## Main alias command ( Allows you to choose who to be controlled )
 ```
-/me         /bct ${Me.CleanName} ${Me.CleanName}|${Target.ID}|${Zone.ID} <arg>
-/all        /bc all|${Target.ID}|${Zone.ID} <arg>
-/group      /bc group|${Target.ID}|${Zone.ID} <arg>
-/tar        /bc tar|${Target.ID}|${Zone.ID} <arg>
-/<class>    /bc <Class>|${Target.ID}|${Zone.ID} <arg>
-/stop       /bc all off
+/me         =/bct ${Me.CleanName} ${Me.CleanName}|${Target.ID}|${Zone.ID} <arg>
+/all        =/bc all|${Target.ID}|${Zone.ID} <arg>
+/group      =/bc group|${Target.ID}|${Zone.ID} <arg>
+/tar        =/bc tar|${Target.ID}|${Zone.ID} <arg>
+/<class>    =/bc <Class>|${Target.ID}|${Zone.ID} <arg>
+/stop       =/bc all off
 
 ```
 
@@ -88,7 +88,7 @@ macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>
 /cothraid     ( me coth the raid )
 ```
 
-## Aliases before this change
+## Aliases with the old structure
 ```
 /acceptall=/bc Accept|GO
 /acceptoff=/bc AutoAccept|OFF
