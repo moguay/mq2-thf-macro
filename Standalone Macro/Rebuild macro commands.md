@@ -6,9 +6,7 @@
 /tar        =/bc tar|${Target.ID}|${Zone.ID} <arg>
 /<class>    =/bc <Class>|${Target.ID}|${Zone.ID} <arg>
 /stop       =/bc all off
-
 ```
-
 ## Macro command : ( All macro command, and sub arguement-Optional )
 ```
 Atk     <Arg2>: On|Off|It
@@ -72,7 +70,6 @@ eq      <arg2>: Sound <On|Off>|Effect <On|Off>|Fps <Value>      ( Set some eq pa
 
 macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>
 ```
-
 ## Sample with this new structure
 ```
 /all atk      ( all attack target )
@@ -87,7 +84,6 @@ macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>
 /tankaoe      ( me tank with aoe aggro )
 /cothraid     ( me coth the raid )
 ```
-
 ## Aliases with the old structure
 ```
 /acceptall=/bc Accept|GO
