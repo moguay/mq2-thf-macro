@@ -1,4 +1,4 @@
-## Main command ( Allows you to choose who to be controlled )
+## Main alias command ( Allows you to choose who to be controlled )
 ```
 /me         /bct ${Me.CleanName} ${Me.CleanName}|${Target.ID}|${Zone.ID} <arg>
 /all        /bc all|${Target.ID}|${Zone.ID} <arg>
@@ -8,7 +8,7 @@
 /stop       /bc all off
 ```
 
-## <arg1>: (all main command, and sub command)
+## Macro command : ( All macro command, and sub arguement )
 ```
 Atk     <Arg2>: On|Off|It
 Tank    <Arg2>: On|Off|aoe <class>|<class>
@@ -79,4 +79,11 @@ zone    <arg2>: Out|Guild|Forest|Vale|<Zone>|Leef   ( Auto moving between zone )
 loot    <arg2>: On|Off|All|Me|Tar|Ignore|Sell|Keep|Destroy|Quest|Max|Auto|Common|Notify     ( Advanced auto looting, by bots analysis repartition )
 
 sound   <arg2>: On|Off      ( Turn off EQ sounds )
+```
+
+## Sample
+```
+/all atk      ( all attack target )
+/all debuff   ( all debuff target )
+/me tank aoe  ( me tank with aoe aggro )
 ```
