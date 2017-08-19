@@ -17,33 +17,32 @@ Sup     <Arg2>: Off|dru|enc|mag                     ( Support attack )
 Melee   <Arg2>: Off|pal|shd|rog|brd|mnk|ber|rng|bst ( Melee attack )
 Aoe     <Arg2>: Off                                 ( Aoe spells atk )
 Mez     <Arg2>: Off|Auto|Tar|Aoe                    ( Mez auto/tar/aoe )
-Stun    <Arg2>: On|Off                              ( Stun atk/mode )
+Stun    <Arg2>: On|Off|Ini                          ( Stun atk/mode )
 Hold    <Arg2>: On|Off|melee|caster|healer|<class>  ( Moving hold-Fight,Cast )
 
 Dps     <Arg2>: Normal|Boost|Burn                   ( Dps mode )
 
-( Heal and Curse is always on, Parallel and Rotation heal for constant cast, command not necessary in normal uses )
+( Heal and Curse is always auto, Parallel and Rotation heal for constant cast, command not necessary in normal uses )
 Heal    <arg2>: On|Off|fix|spam <class>|<class>     ( Auto heal, Fix=Quick heal, Spam=Simple heal spamming )
 Curse   <arg2>: On|Off                              ( Auto cure )
 Debuff  <arg2>: Off|status|dru1|dru2|<class>|but <classes>|Donor <class>|Bp <class>|Epic <class>
                                                     ( Auto Debuff tar, auto dru rotation, manual )
 
 ( All cast is managed by Queue by priority, and casted only if necessary - Filtered before casting or Breaked before the end )
-Sn      <arg>: Type Spell|Spells                    ( Manual self casting Spell|Disc|Alt )
-Snt     <arg>: Type Spell|Spells Tar|Tars           ( Manual target casting Spell|Disc|Alt )
+Mcast   <arg>: Type Spell|Spells on Tar|Tars        ( Manual self/target casting Spell|Disc|Alt )
                Type=heal|cheal|force|first|after|curse|mbuff (mass group buff)|group
 
 ( All buff is auto launched only if necessary - Self/Tar/Group/Buff block analysis )
-Buff    <arg2>: On|Off|aura|check                   ( Self buff )
+Buff    <arg2>: On|Off|aura|check|Ini               ( Self buff )
 Sune    <arg2>: All|Tar                             ( Long buff + Shrink + Healer Automation)
 Finals  <arg2>: All|Tar                             ( Short buff )
 Spirit  <arg2>: On|Off                              ( Donator Vambrace auto buff )
-Twist   <arg2>: On|Off|<Sequence>                   ( Bard twist )
+Twist   <arg2>: On|Off|<Sequence>|Ini               ( Bard twist, twist auto on atk )
 Unbuff  <arg2>: All|Levi|Illu|<Spell>               ( Unbuff - Auto unbuff is coded in hard for specific class in raid )
 Automation                                          ( Summon healer automation )
 Shrink                                              ( Shrink bots )
 Levi                                                ( Necro, Clicies levi )
-Spells  <arg2>: All|<save name>                     ( ReLoad spells bar )
+Spells  <arg2>: All|<save name>|Ini                 ( ReLoad spells bar )
 
 Stick   <arg2>: On|Off                              ( Sticking )
 Move    <arg2>: Square|Me|Tar|Talk|Say <text>|Combat <Stick|Move>
@@ -57,7 +56,7 @@ Forage  <arg2>: On|Off                              ( Forage )
 Combine                                             ( Tradskill and bag combine )
 
 Accept  <arg2>: On|Off|All|Me|Tar                   ( Accept dialog )
-Rez     <arg2>: On|Off|All|Me|Tar|Bot               ( Auto Drag + Consent + Rez )
+Rez     <arg2>: On|Off|All|Me|Tar|Bot               ( Auto Drag + Consent + Rez + Accept )
 Drag                                                ( Auto Drag + Consent )
 Coth    <arg2>: On|Off|Tar|ButTar|Group|Raid|Bot|Perma
                                                     ( Advanced coth - Parallel cothing )
@@ -74,18 +73,32 @@ Aug     =/say #bot augmentitem                      ( Force to forge augement )
 Stats   =/bcaa //say #mystats                       ( View mystats server on all bots )
 Focus   =/bcaa //say #myfocus                       ( View myfocus server on all bots )
 
-form    <arg2>: Raid|Group                          ( Auto form the raid or group )
-zone    <arg2>: Out|Guild|Forest|Vale|<Zone>|Leef   ( Auto moving between zone )
+form    <arg2>: Raid|Group|Ini                      ( Auto form the raid or group )
+zone    <arg2>: Out|Guild|Forest|Vale|<Zone>|Leaf   ( Auto moving between zone )
 loot    <arg2>: On|Off|All|Me|Tar|Ignore|Sell|Keep|Destroy|Quest|Max|Auto|Common|Notify
                                                     ( Advanced auto looting, by bots analysis repartition )
 
-stop                                                ( Stop all - Atk,Moving )
-eq      <arg2>: Sound <On|Off>|Effect <On|Off>|Fps <Value>
-                                                    ( Set some eq parameter )
+stop                                                ( Stop all - Atk,Moving,Twist )
 
+eq      <arg2>: Sound <On|Off>|Effect <On|Off>|Fps <Value>|AutoClip <Value>
+                                                    ( Set some eq parameter )
+ini     <arg2>: MainTank|Channel|MeleeRange|ToonTrade|EQDIR|MQDIR|DRUID1|DRUID2|SUNEVAMBRACELIST|VAMPIREBANELIST
+                                                    ( Set some default ini parameter, to be defined )
 macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>  ( Macro management )
 
-- Adding defaut setup.ini command (ex /pet default on - for auto pet atk on)
+TODO:
+- Full rewite EQBC Event
+- Adding new alias on start
+- Possible retro compatibility ?
+- Adding bc commands for each new macro command and write each function for argmument
+- Adding sub command "Ini" to set defaut setup.ini (ex /pet default on - for auto pet atk on)
+- Merge sn/snt by mcast command and test it
+- Add Buff on/off to setup.ini
+- Add Spirit on/off to setup.ini
+- Merge Combine in macro, create recipe ini file, probably possible or not!
+- Replace Aug function into Inv by augitem
+- Replace Stats/Focus function into Inv by stats/focus ?
+- Merge Zone to guild, Donator/Lucky Charm/Vale Token
 ```
 ## Sample with this new structure
 ```
