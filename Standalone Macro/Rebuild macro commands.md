@@ -1,74 +1,91 @@
 ## Main alias command ( Allows you to choose who to be controlled )
 ```
-/me         =/bct ${Me.CleanName} ${Me.CleanName}|${Target.ID}|${Zone.ID} <arg>
-/all        =/bc all|${Target.ID}|${Zone.ID} <arg>
-/group      =/bc group|${Target.ID}|${Zone.ID} <arg>
-/tar        =/bc tar|${Target.ID}|${Zone.ID} <arg>
-/<class>    =/bc <Class>|${Target.ID}|${Zone.ID} <arg>
-/stop       =/bc all off
+/me      <cmd> <sub>    =/bct ${Me.CleanName} ${Me.CleanName}|${Target.ID}|${Zone.ID}
+/all     <cmd> <sub>    =/bc all|${Target.ID}|${Zone.ID}
+/group   <cmd> <sub>    =/bc group|${Target.ID}|${Zone.ID}
+/tar     <cmd> <sub>    =/bc tar|${Target.ID}|${Zone.ID}
+/<class> <cmd> <sub>    =/bc <Class>|${Target.ID}|${Zone.ID}
+/stop                   =/bc all off
+
 ```
+
 ## Macro command : ( All macro command, and sub arguement-Optional )
 ```
-Atk     <Arg2>: On|Off|It
-Tank    <Arg2>: On|Off|aoe <class>|<class>
-Sup     <Arg2>: On|Off|dru|enc|mag
-Melee   <Arg2>: On|Off|pal|shd|rog|brd|mnk|ber|rng|bst
-Stun    <Arg2>: On|Off
-Aoe     <Arg2>: On|Off
-Mez     <Arg2>: On|Off|Aoe
+Tank    <Arg2>: Off|Aoe <class>|<class>             ( Tank/Offtank )
+Atk     <Arg2>: Off|It                              ( Global attack )
+Sup     <Arg2>: Off|dru|enc|mag                     ( Support attack )
+Melee   <Arg2>: Off|pal|shd|rog|brd|mnk|ber|rng|bst ( Melee attack )
+Aoe     <Arg2>: Off                                 ( Aoe spells atk )
+Mez     <Arg2>: Off|Auto|Tar|Aoe                    ( Mez auto/tar/aoe )
+Stun    <Arg2>: On|Off                              ( Stun atk/mode )
 Hold    <Arg2>: On|Off|melee|caster|healer|<class>  ( Moving hold-Fight,Cast )
 
-Dps     <Arg2>: Normal|Boost|Burn
+Dps     <Arg2>: Normal|Boost|Burn                   ( Dps mode )
 
 ( Heal and Curse is always on, Parallel and Rotation heal for constant cast, command not necessary in normal uses )
-Heal    <arg2>: On|Off|fix|spam <class>|<class>
-Curse   <arg2>: On|Off
-Debuff  <arg2>: On|Off|status|dru1|dru2|<class>|but <classes>|Donor <class>|Bp <class>|Epic <class>
+Heal    <arg2>: On|Off|fix|spam <class>|<class>     ( Auto heal, Fix=Quick heal, Spam=Simple heal spamming )
+Curse   <arg2>: On|Off                              ( Auto cure )
+Debuff  <arg2>: Off|status|dru1|dru2|<class>|but <classes>|Donor <class>|Bp <class>|Epic <class>
+                                                    ( Auto Debuff tar, auto dru rotation, manual )
 
-Buff    <arg2>: On|Off|aura|check  ( Self buff )
-Sune    <arg2>: All|Tar            ( Long buff + Shrink + Healer Automation)
-Finals  <arg2>: All|Tar            ( Short buff )
-Spirit  <arg2>: On|Off             ( Donator Vambrace auto buff )
-Twist   <arg2>: On|Off
-Unbuff  <arg2>: All|Levi|Illu|<Spell>
-Automation
-Shrink
-Levi
-Spells  <arg2>: All|<save name>     ( ReLoad spells bar )
+( All cast is managed by Queue by priority, and casted only if necessary - Filtered before casting or Breaked before the end )
+Sn      <arg>: Type Spell|Spells                    ( Manual self casting Spell|Disc|Alt )
+Snt     <arg>: Type Spell|Spells Tar|Tars           ( Manual target casting Spell|Disc|Alt )
+               Type=heal|cheal|force|first|after|curse|mbuff (mass group buff)|group
 
-Stick   <arg2>: On|Off      ( Sticking )
-Move    <arg2>: Square|Me|Tar|Talk|Say <text>|Combat <Stick|Move>  ( Roman formation|Move to me|target|target with standard say (to enter zone)|target with custom say|Combat melee follow )
+( All buff is auto launched only if necessary - Self/Tar/Group/Buff block analysis )
+Buff    <arg2>: On|Off|aura|check                   ( Self buff )
+Sune    <arg2>: All|Tar                             ( Long buff + Shrink + Healer Automation)
+Finals  <arg2>: All|Tar                             ( Short buff )
+Spirit  <arg2>: On|Off                              ( Donator Vambrace auto buff )
+Twist   <arg2>: On|Off|<Sequence>                   ( Bard twist )
+Unbuff  <arg2>: All|Levi|Illu|<Spell>               ( Unbuff - Auto unbuff is coded in hard for specific class in raid )
+Automation                                          ( Summon healer automation )
+Shrink                                              ( Shrink bots )
+Levi                                                ( Necro, Clicies levi )
+Spells  <arg2>: All|<save name>                     ( ReLoad spells bar )
+
+Stick   <arg2>: On|Off                              ( Sticking )
+Move    <arg2>: Square|Me|Tar|Talk|Say <text>|Combat <Stick|Move>
+                                                    ( Roman formation|Move to me|target|target with standard say (to enter zone)|target with custom say|Combat melee follow )
 
 Pos     <Arg2>: lit|ele|lli                         ( Start fight position )
 Balance <Arg2>: On|Off|<% Value>                    ( Balance DPS )
-Bane                        ( Vampire Bane )
+Bane                                                ( Vampire Bane )
 
-Forage  <arg2>: On|Off
-Combine                     ( Tradskill and bag combine )
+Forage  <arg2>: On|Off                              ( Forage )
+Combine                                             ( Tradskill and bag combine )
 
-Accept  <arg2>: On|Off|All|Me|Tar
-Rez     <arg2>: On|Off|All|Me|Tar|Bot
-Drag                        ( Drag corpse + Auto consent )
-Coth    <arg2>: On|Off|Tar|ButTar|Group|Raid|Bot|Perma  ( Advanced coth )
+Accept  <arg2>: On|Off|All|Me|Tar                   ( Accept dialog )
+Rez     <arg2>: On|Off|All|Me|Tar|Bot               ( Auto Drag + Consent + Rez )
+Drag                                                ( Auto Drag + Consent )
+Coth    <arg2>: On|Off|Tar|ButTar|Group|Raid|Bot|Perma
+                                                    ( Advanced coth - Parallel cothing )
 
-Pet     <arg2>: Summon|Augment|Attack|Hold|Weapon <Normal|Zek>|Clear    ( Advanced pet management )
+Pet     <arg2>: Summon|Augment|Attack|Hold|Weapon <Normal|Zek>|Clear
+                                                    ( Advanced pet management -  )
 
-Bank    <arg2>: Clear|Stock ( Clear, and Auto stock in bank )
-Inv     <arg2>: Tar|Food|Save|Restore|Check|Armor|Aug|Stock|Bank|Clean|Clear|OpenBag    ( Advanced inventory management )
-Finditem                    ( Return bots item quantity and score - inv,bank,equip,forged)
+Bank    <arg2>: Clear|Stock                         ( Clear, and Auto stock in bank )
+Inv     <arg2>: Tar|Food|Save|Restore|Check|Armor|Aug|Stock|Bank|Clean|Clear|OpenBag
+                                                    ( Advanced inventory management )
+Finditem                                            ( Return bots item quantity and score - inv,bank,equip,forged)
 
-Aug     /say #bot augmentitem
-Stats   /bcaa //say #mystats
-Focus   /bcaa //say #myfocus
+Aug     =/say #bot augmentitem                      ( Force to forge augement )
+Stats   =/bcaa //say #mystats                       ( View mystats server on all bots )
+Focus   =/bcaa //say #myfocus                       ( View myfocus server on all bots )
 
-form    <arg2>: Raid|Group  ( Auto form the raid or group )
+form    <arg2>: Raid|Group                          ( Auto form the raid or group )
 zone    <arg2>: Out|Guild|Forest|Vale|<Zone>|Leef   ( Auto moving between zone )
-loot    <arg2>: On|Off|All|Me|Tar|Ignore|Sell|Keep|Destroy|Quest|Max|Auto|Common|Notify     ( Advanced auto looting, by bots analysis repartition )
+loot    <arg2>: On|Off|All|Me|Tar|Ignore|Sell|Keep|Destroy|Quest|Max|Auto|Common|Notify
+                                                    ( Advanced auto looting, by bots analysis repartition )
 
-stop                        ( Stop all - Atk,Moving )
-eq      <arg2>: Sound <On|Off>|Effect <On|Off>|Fps <Value>      ( Set some eq parameter )
+stop                                                ( Stop all - Atk,Moving )
+eq      <arg2>: Sound <On|Off>|Effect <On|Off>|Fps <Value>
+                                                    ( Set some eq parameter )
 
-macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>
+macro   <arg2>: Start|Restart|End|Alias|Stat <LPS>  ( Macro management )
+
+- Adding defaut setup.ini command (ex /pet default on - for auto pet atk on)
 ```
 ## Sample with this new structure
 ```
