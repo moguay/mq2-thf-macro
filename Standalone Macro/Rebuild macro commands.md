@@ -1,11 +1,11 @@
 ## Main alias command ( Allows you to choose who to be controlled )
 ```
-/me      <cmd> <Option> =/bct ${Me.CleanName} ${Me.CleanName}:${Target.ID}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
-/all     <cmd> <Option> =/bc all:${Target.ID}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
-/group   <cmd> <Option> =/bc group:${Target.ID}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
-/tar     <cmd> <Option> =/bc tar:${Target.ID}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
-/<class> <cmd> <Option> =/bc <Class>:${Target.ID}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
-/stop                   =/bc all:0:${Zone.ID}:0 off
+/me      <cmd> <Option> =/bct ${Me.CleanName} ${Me.CleanName}:${If[${Target.ID},${Target.ID},]}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
+/all     <cmd> <Option> =/bc all:${If[${Target.ID},${Target.ID},]}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
+/group   <cmd> <Option> =/bc group:${If[${Target.ID},${Target.ID},]}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
+/tar     <cmd> <Option> =/bc tar:${If[${Target.ID},${Target.ID},]}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
+/<class> <cmd> <Option> =/bc <class>:${If[${Target.ID},${Target.ID},]}:${Zone.ID}:${Me.Y.Int},${Me.X.Int},${Me.Z.Int},${Me.Heading.Degrees.Int}
+/stop                   =/bc all::${Zone.ID}: off
 
 ```
 
