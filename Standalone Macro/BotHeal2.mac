@@ -3,86 +3,82 @@ Sub Main
 | Class exclusion
 /if (!${Me.Class.Name.Equal[Cleric]} && !${Me.Class.Name.Equal[Shaman]} && !${Me.Class.Name.Equal[Druid]} && !${Me.Class.Name.Equal[Paladin]} && !${Me.Class.Name.Equal[Ranger]} && !${Me.Class.Name.Equal[Beastlord]}) /return
 
-    /if (!${Plugin[MQ2Cast].Name.Equal[MQ2Cast]})                               /plugin MQ2Cast
-    /if (!${Plugin[MQ2EQBC].Name.Equal[MQ2EQBC]})                               /plugin MQ2EQBC
-    /if (!${Plugin[MQ2ChatWnd].Name.Equal[MQ2ChatWnd]})                         /plugin mq2chatwnd
+/if (!${Plugin[MQ2Cast].Name.Equal[MQ2Cast]})                               /plugin MQ2Cast
+/if (!${Plugin[MQ2EQBC].Name.Equal[MQ2EQBC]})                               /plugin MQ2EQBC
+/if (!${Plugin[MQ2ChatWnd].Name.Equal[MQ2ChatWnd]})                         /plugin mq2chatwnd
 
-    | /if (!${Plugin[mq2custombinds].Name.Equal[mq2custombinds]})                 /plugin mq2custombinds
-    | /if (!${Plugin[mq2emusearch].Name.Equal[mq2emusearch]})                     /plugin mq2emusearch
-    /if (!${Plugin[mq2labels].Name.Equal[mq2labels]})                           /plugin mq2labels
-    /if (!${Plugin[mq2map].Name.Equal[mq2map]})                                 /plugin mq2map
+| /if (!${Plugin[mq2custombinds].Name.Equal[mq2custombinds]})                 /plugin mq2custombinds
+| /if (!${Plugin[mq2emusearch].Name.Equal[mq2emusearch]})                     /plugin mq2emusearch
+/if (!${Plugin[mq2labels].Name.Equal[mq2labels]})                           /plugin mq2labels
+/if (!${Plugin[mq2map].Name.Equal[mq2map]})                                 /plugin mq2map
 
-    /if (!${Plugin[MQ2NetBots].Name.Equal[MQ2NetBots]})                         /plugin MQ2NetBots auto
-    /if (!${Plugin[MQ2NetHeal].Name.Equal[MQ2NetHeal]})                         /plugin MQ2NetHeal auto
-    /if (!${Plugin[MQ2MoveUtils].Name.Equal[MQ2MoveUtils]})                     /plugin MQ2MoveUtils
-    | /if (!${Plugin[MQ2Buffblock].Name.Equal[MQ2Buffblock]})                     /plugin MQ2Buffblock
-    /if (!${Plugin[MQ2Exchange].Name.Equal[MQ2Exchange]})                       /plugin MQ2Exchange
-    | /if (!${Plugin[MQ2EmuAutoMacro].Name.Equal[MQ2EmuAutoMacro]})               /plugin MQ2EmuAutoMacro
-    /if (!${Plugin[MQ2AutoGroup].Name.Equal[MQ2AutoGroup]})                     /plugin MQ2AutoGroup
-    /if (!${Plugin[MQ2AutoLogin].Name.Equal[MQ2AutoLogin]})                     /plugin MQ2AutoLogin
-    | /if (!${Plugin[MQ2EmuMouseAPI].Name.Equal[MQ2EmuMouseAPI]})                 /plugin MQ2EmuMouseAPI
-    | /if (!${Plugin[MQ2EmuArt].Name.Equal[MQ2EmuArt]})                           /plugin MQ2EmuArt
-    /if (!${Plugin[MQ2ItemDisplay].Name.Equal[MQ2ItemDisplay]})                 /plugin MQ2ItemDisplay
+/if (!${Plugin[MQ2NetBots].Name.Equal[MQ2NetBots]})                         /plugin MQ2NetBots auto
+/if (!${Plugin[MQ2NetHeal].Name.Equal[MQ2NetHeal]})                         /plugin MQ2NetHeal auto
+/if (!${Plugin[MQ2MoveUtils].Name.Equal[MQ2MoveUtils]})                     /plugin MQ2MoveUtils
+| /if (!${Plugin[MQ2Buffblock].Name.Equal[MQ2Buffblock]})                     /plugin MQ2Buffblock
+/if (!${Plugin[MQ2Exchange].Name.Equal[MQ2Exchange]})                       /plugin MQ2Exchange
+| /if (!${Plugin[MQ2EmuAutoMacro].Name.Equal[MQ2EmuAutoMacro]})               /plugin MQ2EmuAutoMacro
+/if (!${Plugin[MQ2AutoGroup].Name.Equal[MQ2AutoGroup]})                     /plugin MQ2AutoGroup
+/if (!${Plugin[MQ2AutoLogin].Name.Equal[MQ2AutoLogin]})                     /plugin MQ2AutoLogin
+| /if (!${Plugin[MQ2EmuMouseAPI].Name.Equal[MQ2EmuMouseAPI]})                 /plugin MQ2EmuMouseAPI
+| /if (!${Plugin[MQ2EmuArt].Name.Equal[MQ2EmuArt]})                           /plugin MQ2EmuArt
+/if (!${Plugin[MQ2ItemDisplay].Name.Equal[MQ2ItemDisplay]})                 /plugin MQ2ItemDisplay
 
-    /if (${Plugin[MQ2Vmqnet].Name.Equal[MQ2Vmqnet]})                            /plugin MQ2Vmqnet unload
-    /if (${Plugin[MQ2EmuNetAdvPath].Name.Equal[MQ2EmuNetAdvPath]})              /plugin MQ2EmuNetAdvPath unload
-    /if (${Plugin[MQ2EmuMap].Name.Equal[MQ2EmuMap]})                            /plugin MQ2EmuMap unload
-    /if (${Plugin[MQ2EmuCharacters].Name.Equal[MQ2EmuCharacters]})              /plugin MQ2EmuCharacters unload
-    /if (${Plugin[MQ2DPSAdv].Name.Equal[MQ2DPSAdv]})                            /plugin MQ2DPSAdv unload
-    /if (${Plugin[MQ2Melee].Name.Equal[MQ2Melee]})                              /plugin MQ2Melee unload
-    /if (${Plugin[MQ2Tracking].Name.Equal[MQ2Tracking]})                        /plugin MQ2Tracking unload
+/if (${Plugin[MQ2Vmqnet].Name.Equal[MQ2Vmqnet]})                            /plugin MQ2Vmqnet unload
+/if (${Plugin[MQ2EmuNetAdvPath].Name.Equal[MQ2EmuNetAdvPath]})              /plugin MQ2EmuNetAdvPath unload
+/if (${Plugin[MQ2EmuMap].Name.Equal[MQ2EmuMap]})                            /plugin MQ2EmuMap unload
+/if (${Plugin[MQ2EmuCharacters].Name.Equal[MQ2EmuCharacters]})              /plugin MQ2EmuCharacters unload
+/if (${Plugin[MQ2DPSAdv].Name.Equal[MQ2DPSAdv]})                            /plugin MQ2DPSAdv unload
+/if (${Plugin[MQ2Melee].Name.Equal[MQ2Melee]})                              /plugin MQ2Melee unload
+/if (${Plugin[MQ2Tracking].Name.Equal[MQ2Tracking]})                        /plugin MQ2Tracking unload
 
-    /if (${Plugin[MQ2Twist].Name.Equal[MQ2Twist]})                              /plugin MQ2Twist unload
+/if (${Plugin[MQ2Twist].Name.Equal[MQ2Twist]})                              /plugin MQ2Twist unload
 
-    /if (!${Plugin[MQ2FPS].Name.Equal[MQ2FPS]})                                 /plugin MQ2FPS noauto
+/if (!${Plugin[MQ2FPS].Name.Equal[MQ2FPS]})                                 /plugin MQ2FPS noauto
 
-    /squelch /netbot on send=on grab=on
-    /squelch /netheal on send=on grab=on
+/squelch /netbot on send=on grab=on
+/squelch /netheal on send=on grab=on
 
-
+| Broadcast messages
+/call Define_Echo
 /if (!${Defined[broadcast]})            /declare broadcast              int     outer   1
 /if (!${Defined[broadcastList]})        /declare broadcastList          string  outer   SHEAL GHEAL
-/if (!${Defined[broadcastMsg]})         /declare broadcastMsg           string  outer   /echo
-| /if (!${Defined[broadcastMsg]})         /declare broadcastMsg           string  outer   /bcaa //echo [${Me.CleanName}]
+/if (!${Defined[broadcastMsg]})         /declare broadcastMsg           string  outer   /bcaa //${echo} [${Me.CleanName}]
+/if (!${Defined[chat]})                 /declare chat                   string  outer   /${echo}
 
-| % Single Target heal
-/if (!${Defined[autohealpctST]})        /declare autohealpctST          int     outer   80
+| % Single Target Tank heal
+/if (!${Defined[autohealpctTK]})        /declare autohealpctTK          int     outer   80
+| % Single Target Other heal
+/if (!${Defined[autohealpctST]})        /declare autohealpctST          int     outer   70
 | % Group heal
 /if (!${Defined[autohealpctGT]})        /declare autohealpctGT          int     outer   80
 | % self pal heal
 /if (!${Defined[autohealpctMT]})        /declare autohealpctMT          int     outer   90
 | % AA divine
 /if (!${Defined[divinearbpct]})         /declare divinearbpct           int     outer   25
-
 | % ManaCheck
 /if (!${Defined[Manastart]})            /declare Manastart              int     outer   8
 | % ManaMantenance
 /if (!${Defined[ManaMainteance]})       /declare ManaMainteance         int     outer   50
-
-/if (!${Defined[autohealpctSHIFT]})     /declare autohealpctSHIFT       int     outer   ${autohealpctST}
+| Compatility Code Variable
+/if (!${Defined[autohealpctSHIFT]})     /declare autohealpctSHIFT       int     outer   ${autohealpctTK}
 /if (!${Defined[autohealpctPARALLEL]})  /declare autohealpctPARALLEL    int     outer   ${autohealpctST}
 /if (!${Defined[autogrouppct]})         /declare autogrouppct           int     outer   ${autohealpctGT}
 /if (!${Defined[autogroupcount]})       /declare autogroupcount         int     outer   2
-
+| Debug
 /if (!${Defined[DebugList]})            /declare DebugList              string  outer
 
-
-/call Define_Echo
+| Initialisation
 /call Define_CastingWindow
 /call Define_ChaoticAttuning
 /call Define_THF_Spells
 
 :Loop
 | Wait during casting, !stand, stun, move, silence
-    /if (${Me.Casting.ID} || ${Window[CastingWindow].Open} || !${Me.State.Equal[STAND]} || ${Me.Stunned} || ${Me.Moving} || (${Cast.Active} && !${Cast.Status.Find[I]})) {
+    /call CheckCasting 0 FALSE True
+    /if (${Macro.Return}) {
         /delay 5
         /goto :loop
-    }
-    /if (!${FindItem[Mark of Luclin].ID}) {
-        /if (${NetBots[${Me.CleanName}].Buff.Find[3011]} || ${NetBots[${Me.CleanName}].Buff.Find[2164]}) {
-            /delay 5
-            /goto :loop
-        }
     }
 
 | Geather Mana (NOT IMPLEMENTED)
@@ -118,29 +114,21 @@ Sub Main
 
 Sub HealSingleTarget
 
-    /if (!${Defined[autohealpctSHIFT]})     /declare autohealpctSHIFT       int     outer   ${autohealpctST}
-    /if (!${Defined[autohealpctPARALLEL]})  /declare autohealpctPARALLEL    int     outer   ${autohealpctST}
-    /varset autohealpctSHIFT ${autohealpctST}
+    | /if (!${Defined[autohealpctSHIFT]})     /declare autohealpctSHIFT       int     outer   ${autohealpctTK}
+    | /if (!${Defined[autohealpctPARALLEL]})  /declare autohealpctPARALLEL    int     outer   ${autohealpctST}
+    /varset autohealpctSHIFT ${autohealpctTK}
     /varset autohealpctPARALLEL ${autohealpctST}
 
+| Tank Shift Heal
+    /declare HealerShift    int local   2
     /declare CountTankNeed  int     local   ${NetWorst.Request[radius${Int[${Spell[${spellSingleHeal}].MyRange}]} pc war${autohealpctSHIFT} shd${autohealpctSHIFT}]}
     /declare TankNeedID     string  local
     /varset TankNeedID                      ${NetWorst.Members.Arg[1, ]}
+| Count heal needed
     /declare CountAllNeed   int     local   ${NetWorst.Request[radius${Int[${Spell[${spellSingleHeal}].MyRange}]} pc all${autohealpctPARALLEL}]}
     /declare WorstListID    string  local
     /varset WorstListID                     ${NetWorst.Members}
     /if (${WorstListID.Find[ ]}) /varset WorstListID ${WorstListID.Replace[ ,|]}
-
-    | /declare PriorityType   string  local   bot
-
-    /declare HealerShift    int local   2
-    /declare CountMeAll     int local   1
-
-    | Prio Tank/offtank
-    | /if (${TankNeedID}!=NULL) {
-        | /varset WorstListID ${TankNeedID}
-        | /varset PriorityType tank
-    | }
     
 | Make All Healer Lists - Ordered by priority
     /if (!${Defined[i]}) /declare i int local
@@ -227,26 +215,26 @@ Sub HealSingleTarget
         /if (!${WorstListID}!=NULL || !${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].ID}) /return
 
         /if (${Cast.Ready[${spellSingleHeal}]}) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "${spellSingleHeal}" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "${spellSingleHeal}" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /casting "${spellSingleHeal}" -targetid|${WorstListID.Arg[${CountMeAll},|]}
         } else /if (!${Me.Class.Name.Equal[Paladin]} && ${Cast.Ready[Stone of the Spiritwalker]} && ${StoneoftheSpiritwalkerTimer}<=0) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "Stone of the Spiritwalker" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "Stone of the Spiritwalker" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /casting "Stone of the Spiritwalker" item -targetid|${WorstListID.Arg[${CountMeAll},|]}
             /call SetGlobalTimer  StoneoftheSpiritwalkerTimer 31s
         } else /if (!${Me.Class.Name.Equal[Paladin]} && ${Cast.Ready[Lava Embroided Cloak]} && ${LavaEmbroidedCloakTimer}<=0) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "Lava Embroided Cloak" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "Lava Embroided Cloak" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /casting "Lava Embroided Cloak" item -targetid|${WorstListID.Arg[${CountMeAll},|]}
             /call SetGlobalTimer  LavaEmbroidedCloakTimer 31s
         } else /if (!${Me.Class.Name.Equal[Paladin]} && ${Cast.Ready[Symbol of Apothic Spirits]} && ${SymbolofApothicSpiritsTimer}<=0) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "Symbol of Apothic Spirits" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "Symbol of Apothic Spirits" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /casting "Symbol of Apothic Spirits" item -targetid|${WorstListID.Arg[${CountMeAll},|]}
             /call SetGlobalTimer  SymbolofApothicSpiritsTimer 31s
         } else /if (!${Me.Class.Name.Equal[Paladin]} && ${Cast.Ready[Gloves of the Chaos Slayer]} && ${GlovesoftheChaosSlayerTimer}<=0) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "Gloves of the Chaos Slayer" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "Gloves of the Chaos Slayer" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /call SetGlobalTimer  GlovesoftheChaosSlayerTimer 16s
             /casting "Gloves of the Chaos Slayer" item -targetid|${WorstListID.Arg[${CountMeAll},|]}
         } else /if (!${Me.Class.Name.Equal[Paladin]} && ${Cast.Ready[Leather Bound Mask of Stone]} && ${LeatherBoundMaskofStoneTimer}<=0) {
-            /if (${broadcastList.Find[SHEAL]} && ${broadcast}==1 && ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}<=${autohealpctPARALLEL}) ${broadcastMsg} Casting HT "Leather Bound Mask of Stone" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
+            /if (${broadcast}==1) ${If[${broadcastList.Find[SHEAL]},${broadcastMsg},/${chat}]} Casting HT "Leather Bound Mask of Stone" on [ ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].CleanName} - ${Spawn[id ${WorstListID.Arg[${CountMeAll},|]}].PctHPs}% ] - ${PriorityType}
             /casting "Leather Bound Mask of Stone" item -targetid|${WorstListID.Arg[${CountMeAll},|]}
             /call SetGlobalTimer  LeatherBoundMaskofStoneTimer 30s
         }
@@ -296,50 +284,30 @@ Sub HealGroup
         /if ((${Me.Class.Name.Equal[Cleric]} || ${Me.Class.Name.Equal[Paladin]}) && !${Me.Moving}) {
 
             /if (${Cast.Ready[Sceptre of Marr]} && ${SceptreofMarrTimer}<=0 && ${count100}>=${autogroupcount}) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Sceptre of Marr" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Sceptre of Marr"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Sceptre of Marr" - gheal
                 /casting "Sceptre of Marr" item
                 /call SetGlobalTimer  SceptreofMarrTimer 5m
                 /return
 
             } else /if (${Cast.Ready[Flindara, Beacon of Light]} && ${FlindaraBeaconofLightTimer}<=0 && ${count100}>=${autogroupcount}) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Flindara, Beacon of Light" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Flindara, Beacon of Light"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Flindara, Beacon of Light" - gheal
                 /casting "Flindara, Beacon of Light" item
                 /call SetGlobalTimer  FlindaraBeaconofLightTimer 25s
                 /return
 
             } else /if (${Cast.Ready[Hammer of the High Priest]} && ${HammeroftheHighPriestTimer}<=0 && ${count70}>=${autogroupcount}) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Hammer of the High Priest" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Hammer of the High Priest"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Hammer of the High Priest" - gheal
                 /casting "Hammer of the High Priest" item
                 /call SetGlobalTimer  HammeroftheHighPriestTimer 10s
                 /return
 
             } else /if (${Cast.Ready[${spellGroupHeal}]}) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "${spellGroupHeal}" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "${spellGroupHeal}"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "${spellGroupHeal}" - gheal
                 /casting "${spellGroupHeal}"
                 /return
 
             } else /if (${Cast.Ready[Frozen Faithbringer's Breastplate]} && ${FrozenFaithbringersBreastplateTimer}<=0) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Frozen Faithbringer's Breastplate" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Frozen Faithbringer's Breastplate"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Frozen Faithbringer's Breastplate" - gheal
                 /casting "Frozen Faithbringer's Breastplate" item
                 /call SetGlobalTimer FrozenFaithbringersBreastplateTimer 10m
                 /return
@@ -349,21 +317,13 @@ Sub HealGroup
         /if ((${Me.Class.Name.Equal[Shaman]} || ${Me.Class.Name.Equal[Druid]}) && !${Me.Moving}) {
 
             /if (${Cast.Ready[Immaculate Prism of Life]} && ${ImmaculatePrismofLifeTimer}<=0) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Immaculate Prism of Life" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Immaculate Prism of Life"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Immaculate Prism of Life" - gheal
                 /casting "Immaculate Prism of Life" item
                 /call SetGlobalTimer ImmaculatePrismofLifeTimer 15s
                 /return
 
             } else /if (${Cast.Ready[Prism of Corruption]} && ${PrismofCorruptionTimer}<=0) {
-                /if (${broadcastList.Find[GHEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Prism of Corruption" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Prism of Corruption"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Prism of Corruption" - gheal
                 /casting "Prism of Corruption" item
                 /call SetGlobalTimer PrismofCorruptionTimer 15s
                 /return
@@ -372,11 +332,7 @@ Sub HealGroup
 
         /if ((${Me.Class.Name.Equal[Cleric]} || ${Me.Class.Name.Equal[Shaman]} || ${Me.Class.Name.Equal[Druid]}) && !${Me.Moving}) {
             /if (${Cast.Ready[Shadowed Boots of Luclin]} && ${ShadowedBootsofLuclinTimer}<=0) {
-                /if (${broadcastList.Find[HEAL]}) {
-                    /if (${broadcast}==1) ${broadcastMsg} Casting HG "Shadowed Boots of Luclin" - gheal
-                } else {
-                    /if (${broadcast}==1) /${chat} Casting HG "Shadowed Boots of Luclin"
-                }
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Shadowed Boots of Luclin" - gheal
                 /casting "Shadowed Boots of Luclin" item
                 /call SetGlobalTimer ShadowedBootsofLuclinTimer 630s
                 /return
@@ -1044,3 +1000,60 @@ Sub ListDelbyName(string sList,string sName,string sDiv)
     /varset ${sList} ${${sList}.Left[-2].Right[-1]}
     /if (${DebugList.Find[core]}) /echo List ${${sList}}  Deleted: ${sName}
 /return ${If[${Defined[sListLocal]},${${sList}},${sList}]}
+
+Sub CheckCasting(string sDelay, bool bNotSilence, bool bMove)
+
+    | /if (${Me.Invis}) /return
+    | /if (!${Cast.Ready}) /return
+    | /if (${Me.State.NotEqual[STAND]}) /return
+
+    /declare bSilence   bool local FALSE
+    /declare bReturn    bool local FALSE
+    /if (${Defined[sDelay]})            /declare delayTimer     timer   local ${sDelay}
+    /if (!${Defined[bNotSilence]})      /declare bNotSilence    bool    local FALSE
+    /if (!${Defined[bMove]})            /declare bMove          bool    local FALSE
+
+    :waiting
+    | Move
+    /if (${bMove}) {
+        /if (${Me.Moving} || ${Select[${MoveTo},ON]}) /varset bReturn TRUE
+    }
+    
+    | Silence
+    /if (!${FindItem[Mark of Luclin].ID}) {
+        /if (${NetBots[${Me.CleanName}].Buff.Find[3011]}) /varset bSilence TRUE
+        /if (${NetBots[${Me.CleanName}].Buff.Find[2164]}) /varset bSilence TRUE
+        /if (${NetBots[${Me.CleanName}].Silenced}) /varset bSilence TRUE
+    }
+    /if (${bSilence}) {
+        /if (!${Int[${NetBots[${Me.CleanName}].Data[${DataSilence}]}]}) /netdata ${DataSilence}=1
+        /if (!${bNotSilence}) /varset bReturn TRUE
+    } else {
+        /if (${Int[${NetBots[${Me.CleanName}].Data[${DataSilence}]}]})  /netdata ${DataSilence}=0
+    }
+    
+    | Stun
+    /if (${Me.Stunned}) /varset bReturn TRUE
+    | Cast Queue
+    /if (${CastStep}) /varset bReturn TRUE
+    | Casting Item
+    /if (${Cast.Active} && (!${Cast.Status.Find[I]} || ${Cast.Status.Equal[C]})) /varset bReturn TRUE
+
+| Below Bard Twist exclusion
+    | Casting
+    /if (!(${Me.Class.Name.Equal[Bard]} && ${TwistCheck.Equal[GO]})) {
+        /if (${Me.Casting.ID}) /varset bReturn TRUE
+        /if (${CastingWindow.Equal[CastingWindow]}) {
+            /if (${Window[${CastingWindow}].Open}) /varset bReturn TRUE
+        } else {
+            /if (${Window[${CastingWindow}].Child[Casting_SpellName].Text.Length}) /varset bReturn TRUE
+        }
+    }
+
+    | Timer Loop
+    /if (${delayTimer}) {
+        /delay 1
+        /goto :waiting
+    }
+
+/return ${bReturn}
