@@ -59,7 +59,7 @@ Sub Main
 | Broadcast messages
     /call Define_Echo
 
-    /if (!${Defined[MacroHealVersion]})     /declare MacroHealVersion       string  local  0.9
+    /if (!${Defined[MacroHealVersion]})     /declare MacroHealVersion       string  local  0.9.1
 
     /if (!${Defined[broadcast]})            /declare broadcast              int     outer   1
     /if (!${Defined[broadcastList]})        /declare broadcastList          string  outer   SHEAL GHEAL
