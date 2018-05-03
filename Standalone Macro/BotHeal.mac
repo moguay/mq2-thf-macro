@@ -443,8 +443,8 @@ Sub HealGroup
 
         /if (${countquick} > 0) {
             | /varset CastQueue
-            /varset CastStep 0
-            /varset CastNum 0
+            | /varset CastStep 0
+            | /varset CastNum 0
             /if (${Me.Casting.ID} || ${Window[${CastingWindow}].Child[Casting_SpellName].Text.Length} || ${Window[CastingWindow].Open}) /stopcast
             /delay 1s (${Cast.Ready})
             /if (${Me.Moving}) {
@@ -1214,10 +1214,6 @@ Sub ListDelbyName(string sList,string sName,string sDiv)
 
 
 Sub CheckCasting(string sDelay, bool bNotSilence, bool bMove)
-
-    | /if (${Me.Invis}) /return
-    | /if (!${Cast.Ready}) /return
-    | /if (${Me.State.NotEqual[STAND]}) /return
 
     /declare bSilence   bool local FALSE
     /declare bReturn    bool local FALSE
