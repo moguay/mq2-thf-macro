@@ -11,7 +11,6 @@ Sub Main
         /echo Exit, not a healer class.
         /return
     }
-    ${Select[${Me.Class.ShortName},SHD,NEC,ENC,MAG]}
 
 | Plugins
     /if (!${Plugin[MQ2Cast].Name.Equal[MQ2Cast]})                               /plugin MQ2Cast
@@ -30,7 +29,7 @@ Sub Main
     /if (!${Plugin[MQ2Exchange].Name.Equal[MQ2Exchange]})                       /plugin MQ2Exchange
     | /if (!${Plugin[MQ2EmuAutoMacro].Name.Equal[MQ2EmuAutoMacro]})               /plugin MQ2EmuAutoMacro
     /if (!${Plugin[MQ2AutoGroup].Name.Equal[MQ2AutoGroup]})                     /plugin MQ2AutoGroup
-    /if (!${Plugin[MQ2AutoLogin].Name.Equal[MQ2AutoLogin]})                     /plugin MQ2AutoLogin
+    /if (!${Plugin[MQ2AutoLogin].Name.Equal[MQ2AutoLogin]})                     /squelch /plugin MQ2AutoLogin
     | /if (!${Plugin[MQ2EmuMouseAPI].Name.Equal[MQ2EmuMouseAPI]})                 /plugin MQ2EmuMouseAPI
     | /if (!${Plugin[MQ2EmuArt].Name.Equal[MQ2EmuArt]})                           /plugin MQ2EmuArt
     /if (!${Plugin[MQ2ItemDisplay].Name.Equal[MQ2ItemDisplay]})                 /plugin MQ2ItemDisplay
