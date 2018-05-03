@@ -470,30 +470,30 @@ Sub function-HealGroup(int count70, int count100, int count, int countquick)
         /if ((${Me.Class.Name.Equal[Cleric]} || ${Me.Class.Name.Equal[Paladin]}) && !${Me.Moving}) {
 
             /if (${Cast.Ready[Sceptre of Marr]} && ${SceptreofMarrTimer}<=0 && ${count100}>=${autogroupcount}) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Sceptre of Marr" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Sceptre of Marr" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Sceptre of Marr" item
                 /call SetGlobalTimer  SceptreofMarrTimer 5m
                 /return TRUE
 
             } else /if (${Cast.Ready[Flindara, Beacon of Light]} && ${FlindaraBeaconofLightTimer}<=0 && ${count100}>=${autogroupcount}) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Flindara, Beacon of Light" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Flindara, Beacon of Light" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Flindara, Beacon of Light" item
                 /call SetGlobalTimer  FlindaraBeaconofLightTimer 25s
                 /return TRUE
 
             } else /if (${Cast.Ready[Hammer of the High Priest]} && ${HammeroftheHighPriestTimer}<=0 && ${count70}>=${autogroupcount}) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Hammer of the High Priest" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Hammer of the High Priest" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Hammer of the High Priest" item
                 /call SetGlobalTimer  HammeroftheHighPriestTimer 10s
                 /return TRUE
 
-            } else /if (${Cast.Ready[${spellGroupHeal}]}) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "${spellGroupHeal}" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+            } else /if (${Cast.Ready[${spellGroupHeal}]} && ${If[${Select[${Int[${Spell[${spellGroupHeal}].AERange}]},70,100]},${count${Int[${Spell[${spellGroupHeal}].AERange}]}},${count}]}>=${autogroupcount}) {
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "${spellGroupHeal}" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "${spellGroupHeal}"
                 /return TRUE
 
-            } else /if (${Cast.Ready[Frozen Faithbringer's Breastplate]} && ${FrozenFaithbringersBreastplateTimer}<=0) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Frozen Faithbringer's Breastplate" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+            } else /if (${Cast.Ready[Frozen Faithbringer's Breastplate]} && ${FrozenFaithbringersBreastplateTimer}<=0 && ${count70}>=${autogroupcount}) {
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Frozen Faithbringer's Breastplate" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Frozen Faithbringer's Breastplate" item
                 /call SetGlobalTimer FrozenFaithbringersBreastplateTimer 10m
                 /return TRUE
@@ -502,14 +502,14 @@ Sub function-HealGroup(int count70, int count100, int count, int countquick)
 
         /if ((${Me.Class.Name.Equal[Shaman]} || ${Me.Class.Name.Equal[Druid]}) && !${Me.Moving}) {
 
-            /if (${Cast.Ready[Immaculate Prism of Life]} && ${ImmaculatePrismofLifeTimer}<=0) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Immaculate Prism of Life" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+            /if (${Cast.Ready[Immaculate Prism of Life]} && ${ImmaculatePrismofLifeTimer}<=0 && ${count70}>=${autogroupcount}) {
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Immaculate Prism of Life" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Immaculate Prism of Life" item
                 /call SetGlobalTimer ImmaculatePrismofLifeTimer 15s
                 /return TRUE
 
-            } else /if (${Cast.Ready[Prism of Corruption]} && ${PrismofCorruptionTimer}<=0) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Prism of Corruption" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+            } else /if (${Cast.Ready[Prism of Corruption]} && ${PrismofCorruptionTimer}<=0 && ${count70}>=${autogroupcount}) {
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Prism of Corruption" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Prism of Corruption" item
                 /call SetGlobalTimer PrismofCorruptionTimer 15s
                 /return TRUE
@@ -517,8 +517,8 @@ Sub function-HealGroup(int count70, int count100, int count, int countquick)
         }
 
         /if ((${Me.Class.Name.Equal[Cleric]} || ${Me.Class.Name.Equal[Shaman]} || ${Me.Class.Name.Equal[Druid]}) && !${Me.Moving}) {
-            /if (${Cast.Ready[Shadowed Boots of Luclin]} && ${ShadowedBootsofLuclinTimer}<=0) {
-                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Shadowed Boots of Luclin" for [ ${If[${countquick},${countquick} quick - ]}${count}/${Group.Members} members ] - gheal
+            /if (${Cast.Ready[Shadowed Boots of Luclin]} && ${ShadowedBootsofLuclinTimer}<=0 && ${count100}>=${autogroupcount}) {
+                /if (${broadcast}==1) ${If[${broadcastList.Find[GHEAL]},${broadcastMsg},/${chat}]} Casting HG "Shadowed Boots of Luclin" for [ ${If[${countquick},${countquick} quick - ,]}${count}/${Math.Calc[${Group.Members}+1]} members ] - gheal
                 /casting "Shadowed Boots of Luclin" item
                 /call SetGlobalTimer ShadowedBootsofLuclinTimer 630s
                 /return TRUE
