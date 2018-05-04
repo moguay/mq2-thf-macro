@@ -122,7 +122,8 @@ Sub Main
 
 :Loop
 | Wait during casting, !stand, stun, move, silence
-    /call CheckCasting 0 FALSE True
+    | /call CheckCasting 0 FALSE True
+    /call CheckCasting
     /if (${Macro.Return}) {
         /delay 5
         /goto :loop
@@ -1212,17 +1213,36 @@ Sub ListDelbyName(string sList,string sName,string sDiv)
 /return ${If[${Defined[sListLocal]},${${sList}},${sList}]}
 
 
-Sub CheckCasting(string sDelay, bool bNotSilence, bool bMove)
+Sub CheckCasting(string sDelay, string sSubFunction, string sCastReady)
 
+    /declare i          int  local
     /declare bSilence   bool local FALSE
     /declare bReturn    bool local FALSE
-    /if (${Defined[sDelay]})            /declare delayTimer     timer   local ${sDelay}
-    /if (!${Defined[bNotSilence]})      /declare bNotSilence    bool    local FALSE
-    /if (!${Defined[bMove]})            /declare bMove          bool    local FALSE
+
+    /if (${Defined[sDelay]})            /declare delayTimer         timer   local ${sDelay}
+
+    | Default Filter
+    /if (!${Defined[sSubFunction]})     /declare sSubFunction       string  local CAST !QUEUE SILENCE MOVE STAND STUN INVIS
+    /if (!${sSubFunction.Length})       /varset sSubFunction        CAST !QUEUE SILENCE MOVE STAND STUN INVIS
+    
+    :FilterRetry
+    | Remove !PARAM
+    /for i 1 to ${Math.Calc[${sSubFunction.Count[ ]} + 1]}
+        /if (${sSubFunction.Arg[${i}, ].Find[!]}) {
+            /call ListDelbyArg "${sSubFunction.Replace[ ,|]}" ${i} " "
+            /varset sSubFunction ${Macro.Return}
+            /goto :FilterRetry
+        }
+    /next i
 
     :waiting
+    | Invis
+    /if (${Bool[${sSubFunction.Find[INVIS]}]}) {
+        /if (${Me.Invis}) /varset bReturn TRUE
+    }
+
     | Move
-    /if (${bMove}) {
+    /if (${Bool[${sSubFunction.Find[MOVE]}]}) {
         /if (${Me.Moving} || ${Select[${MoveTo},ON]}) /varset bReturn TRUE
     }
 
@@ -1232,28 +1252,36 @@ Sub CheckCasting(string sDelay, bool bNotSilence, bool bMove)
         /if (${NetBots[${Me.CleanName}].Buff.Find[2164]}) /varset bSilence TRUE
         /if (${NetBots[${Me.CleanName}].Silenced}) /varset bSilence TRUE
     }
-    /if (${bSilence}) {
-        /if (!${Int[${NetBots[${Me.CleanName}].Data[${DataSilence}]}]}) /netdata ${DataSilence}=1
-        /if (!${bNotSilence}) /varset bReturn TRUE
-    } else {
-        /if (${Int[${NetBots[${Me.CleanName}].Data[${DataSilence}]}]})  /netdata ${DataSilence}=0
-    }
+    /if (${Bool[${sSubFunction.Find[SILENCE]}]} && ${bSilence}) /varset bReturn TRUE
+
+    | Not Stand
+    /if (${Bool[${sSubFunction.Find[STAND]}]} && ${Me.State.NotEqual[STAND]}) /varset bReturn TRUE
 
     | Stun
-    /if (${Me.Stunned}) /varset bReturn TRUE
-    | Cast Queue
-    /if (${CastStep}) /varset bReturn TRUE
-    | Casting Item
-    /if (${Cast.Active} && (!${Cast.Status.Find[I]} || ${Cast.Status.Equal[C]})) /varset bReturn TRUE
+    /if (${Bool[${sSubFunction.Find[STUN]}]} && ${Me.Stunned}) /varset bReturn TRUE
 
-| Below Bard Twist exclusion
-    | Casting
-    /if (!(${Me.Class.Name.Equal[Bard]} && ${TwistCheck.Equal[GO]})) {
-        /if (${Me.Casting.ID}) /varset bReturn TRUE
-        /if (${CastingWindow.Equal[CastingWindow]}) {
-            /if (${Window[${CastingWindow}].Open}) /varset bReturn TRUE
-        } else {
-            /if (${Window[${CastingWindow}].Child[Casting_SpellName].Text.Length}) /varset bReturn TRUE
+    | Cast
+    /if (${Bool[${sSubFunction.Find[CAST]}]}) {
+        | Cast Queue
+        /if (${sSubFunction.Find[QUEUE]} && ${CastStep}) /varset bReturn TRUE
+        | Casting Item
+        /if (${Cast.Active} && (!${Cast.Status.Find[I]} || ${Cast.Status.Equal[C]})) /varset bReturn TRUE
+
+    | Below Bard Twist exclusion
+        | Casting
+        /if (!(${Me.Class.Name.Equal[Bard]} && ${TwistCheck.Equal[GO]})) {
+
+            /if (${Me.Casting.ID}) /varset bReturn TRUE
+
+            /if (${Cast.Active} && !${Cast.Ready}) /varset bReturn TRUE
+            
+            /if (${sCastReady.Length} && ${Cast.Active} && !${Cast.Ready[${sCastReady}]}) /varset bReturn TRUE
+
+            /if (${CastingWindow.Equal[CastingWindow]}) {
+                /if (${Window[${CastingWindow}].Open}) /varset bReturn TRUE
+            } else {
+                /if (${Window[${CastingWindow}].Child[Casting_SpellName].Text.Length}) /varset bReturn TRUE
+            }
         }
     }
 
@@ -1264,3 +1292,23 @@ Sub CheckCasting(string sDelay, bool bNotSilence, bool bMove)
     }
 
 /return ${bReturn}
+
+
+Sub ListDelbyArg(string sList,int sArg,string sDiv)
+    /if (!${Defined[sDiv]}) /declare sDiv string local |
+    /if (!${Defined[${sList}]}) {
+        /declare sListLocal string local ${sList}
+        /varset sList sListLocal
+    }    
+    /varset ${sList} ${sDiv}${${sList}}${sDiv}${sDiv}
+    /declare sright int local
+    /declare sleft int local
+    /declare splaceholder string local ${${sList}}
+    /varset splaceholder ${splaceholder.Arg[${sArg},${sDiv}]}
+    /varcalc sleft  ${${sList}.Find[${sDiv}${splaceholder}${sDiv}]}
+    /varset splaceholder ${splaceholder}${sDiv}
+    /varcalc sright ${sleft}+${splaceholder.Length}
+    /varset ${sList} ${${sList}.Left[${sleft}]}${${sList}.Right[-${sright}]}
+    /varset ${sList} ${${sList}.Left[-2].Right[-1]}
+    /if (${DebugList.Find[core]}) /echo List <${${sList}}> deleted arg ${sArg}
+/return ${If[${Defined[sListLocal]},${${sList}},${sList}]}
