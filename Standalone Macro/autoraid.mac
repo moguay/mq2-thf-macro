@@ -1,0 +1,75 @@
+| AutoRaid by moguay v1.9.4 - moguayv@gmail.com
+
+| 1.0 - THF balanced raid
+| 1.9.1 - Add live/test server raid (V2.0 prepare)
+| 1.9.2 - Add cache
+| 1.9.3 - Add custom conf
+| 1.9.4 - Reforge macro structure - autoraid.mac (for standalaone) and autoraid.inc (for include in macro)
+| 1.9.4 - Add automatic notification broadcast for groups that may be invited in another raid
+
+|--------------------------------------------------------------------------
+| - 0 configuration
+| - No specific plugin needed (mq2turbo can be use)
+| Features for raid fight logic
+| - Classes priority distribution
+| - Distribution adapted to different server
+| - Power sorting of bots
+| - Balanced power of bots
+| - 4 Groups type management (Tank, Melee, Pet, Caster class)
+
+| - TANK/Offtank, Healer and Bard have a specific repartition logic
+
+| - Add cache sub function (AutoRaid-Cache.ini)
+| - Cache is renew when the bots change
+| - Cache can be edited manually to perform personalized raid formation
+| - Group and Raid invite verification + add notification if lag
+| - Add multiple custom configuration (for manually dispatching)
+|       > /mac autoraid load form1      to make formation from AutoRaid-Form1.ini
+|       > /mac autoraid save form1      to save formation in AutoRaid-Form1.ini
+| Example of the contents of the file
+| [Autoraid]
+| INVITE_LIST1=WAR:Bufo#1 WAR:Boulon SHD:Guismo CLR:Moguay RNG:Framboise DRU:Diancecht
+| INVITE_LIST2=PAL:Leapyear#2 SHM:Oskiti BRD:Olirr ROG:Tenaciousd BER:Liime BER:Jeewid
+| INVITE_LIST3=CLR:Erelog#4 BRD:Cendrillon WIZ:Lungorthin WIZ:Lugorthin WIZ:Charmant MAG:Sherly
+| INVITE_LIST4=ENC:Ogen#0 BST:Hykim
+
+#include Autoraid.inc
+
+Sub main(string CommandText)
+
+    /if (!${Defined[AutoraidVersion]}) /declare AutoraidVersion    string  outer   1.9.4
+
+    /if (!${Defined[i]}) /declare i int local
+    /if (${Macro.Params}>1) {
+        /for i 1 to ${Math.Calc[${Macro.Params}-1]}
+            /varset CommandText ${CommandText} ${Param${i}}
+        /next i
+    }
+    
+    /call function-autoraid ${CommandText}
+    
+/return
+
+Sub ListDelbyArg(string sList,int sArg,string sDiv)
+
+    /if (!${Defined[sDiv]}) /declare sDiv string local |
+    /if (!${Defined[${sList}]}) {
+        /declare sListLocal string local ${sList}
+        /varset sList sListLocal
+    }
+    /varset ${sList} ${sDiv}${${sList}}${sDiv}${sDiv}
+    
+    /declare sright int local
+    /declare sleft int local
+    /declare splaceholder string local ${${sList}}
+    /varset splaceholder ${splaceholder.Arg[${sArg},${sDiv}]}
+    /varcalc sleft  ${${sList}.Find[${sDiv}${splaceholder}${sDiv}]}
+    /varset splaceholder ${splaceholder}${sDiv}
+    /varcalc sright ${sleft}+${splaceholder.Length}
+
+    /varset ${sList} ${If[${sleft},${${sList}.Left[${sleft}]},]}${If[${sright},${${sList}.Right[-${sright}]},]}
+
+    | /if (${sleft})  /varset ${sList} ${${sList}.Right[-1]}
+    /if (${sright}) /varset ${sList} ${${sList}.Left[-2]}
+
+/return ${If[${Defined[sListLocal]},${${sList}},${sList}]}
